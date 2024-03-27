@@ -3,7 +3,11 @@ project(Biocenosis)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(SOURCE_FILES source/main.cpp
-        source/defines.h)
+        source/defines.h
+        source/Game.h
+        source/Entity.cpp
+        source/Entity.h
+        source/Game.cpp)
 add_executable(Biocenosis ${SOURCE_FILES})
 
 # Добавление textures
