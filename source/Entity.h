@@ -9,13 +9,15 @@
 
 class Entity {
 protected:
-    sf::Sprite sprite;
+    sf::Texture texture;
+    sf::RectangleShape shape;
 public:
     Entity();
+    Entity(const float x, const float y);
     ~Entity();
 
     virtual void update();
-    virtual void render(sf::RenderTarget& target);
+    virtual void render(sf::RenderTarget* target);
     virtual void move(const float x, const float y);
 };
 

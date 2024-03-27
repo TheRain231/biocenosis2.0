@@ -1,12 +1,19 @@
 //
-// Created by Андрей Степанов on 27.03.2024.
+// Created by Лаба on 27.03.2024.
 //
 
 #include "Entity.h"
 
 Entity::Entity() {
-    this->sprite.setScale(sf::Vector2f(SPRITE_SIZE, SPRITE_SIZE));
-    this->sprite.setColor(sf::Color::White);
+    texture.loadFromFile("textures/face.png");
+    this->shape.setSize(sf::Vector2f(SPRITE_SIZE, SPRITE_SIZE));
+    this->shape.setTexture(&texture);
+}
+
+Entity::Entity(const float x, const float y) {
+    this->shape.setSize(sf::Vector2f(SPRITE_SIZE, SPRITE_SIZE));
+    this->shape.setFillColor(sf::Color::White);
+    this->shape.setOrigin(-x, -y);
 }
 
 Entity::~Entity() {
@@ -17,10 +24,10 @@ void Entity::update() {
 
 }
 
-void Entity::render(sf::RenderTarget &target) {
-
+void Entity::render(sf::RenderTarget *target) {
+    target->draw(this->shape);
 }
 
 void Entity::move(const float x, const float y) {
-    this->sprite.move(sf::Vector2f(x, y));
+    this->shape.move(sf::Vector2f(x, y));
 }

@@ -6,10 +6,12 @@
 #include <cstdlib>
 
 #include "defines.h"
+#include "Entity.h"
 
 class Game
 {
 private:
+    std::vector<Entity> entities;
     sf::RenderWindow *window;
     sf::Event sfEvent;
     void initWindow();
