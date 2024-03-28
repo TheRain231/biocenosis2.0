@@ -20,7 +20,3 @@ void Hunter::findSex() {
 void Hunter::deleteObject() {
 
 }
-
-void Hunter::setTexture() {
-    texture.loadFromFile("textures/sheep.png");
-}
