@@ -23,10 +23,7 @@ void Game::update() {
 void Game::render() {
     this->window->clear();
     this->window->draw(background);
-    //for (auto & entity: Grasseaters::grasseaters){
-    //    //entity->move(1, 1);
-    //     entity.render(this->window);
-    //}
+
     Grasseaters::renderGrasseaters(this->window);
 
     this->window->display();
@@ -40,7 +37,6 @@ void Game::run() {
     backgroundTexture.loadFromFile("textures/background.png");
     background.setSize(sf::Vector2f(WINDOW_WIDTH, WINDOW_HEIGHT));
     background.setTexture(&backgroundTexture);
-
     while (this->window->isOpen()) {
         this->update();
         this->render();

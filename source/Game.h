@@ -16,6 +16,7 @@ private:
     sf::Texture backgroundTexture;
 
     std::vector<Entity*> entities;
+
     sf::RenderWindow *window;
     sf::Event sfEvent;
     void initWindow();

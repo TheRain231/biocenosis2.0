@@ -52,4 +52,3 @@ void Alives::checkState(){
 void Alives::move(const float x, const float y) {
     this->shape.move(sf::Vector2f(x, y));
 }
-

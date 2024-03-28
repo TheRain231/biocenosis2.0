@@ -9,7 +9,6 @@
 
 class Entity {
 public:
-    sf::Texture texture;
     sf::RectangleShape shape;
 public:
     Entity();

@@ -14,6 +14,9 @@ public:
     void findFood();
     void findSex();
     void deleteObject();
+
+    static sf::Texture texture;
+    static void setTexture();
 };
 
 
