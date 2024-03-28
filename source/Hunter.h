@@ -5,6 +5,7 @@
 #ifndef BIOCENOSIS_HUNTER_H
 #define BIOCENOSIS_HUNTER_H
 #include "Alives.h"
+#include "Grasseaters.h"
 
 class Hunter: public Alives {
 public:

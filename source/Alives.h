@@ -9,13 +9,14 @@
 class Alives: public Entity {
 protected:
     enum State {
-        sex, eat, dead
+        sex, eat, dead, walk
     };
     State currentState;
-    std::pair<float, float> destination;
+    sf::Vector2f destination;
     int hunger;
     int needOfSex;
     int liveTime;
+
 public:
     Alives();
     Alives(const float x, const float y);
@@ -27,7 +28,6 @@ public:
     void move(const float x, const float y);
     virtual void findFood() = 0;
     virtual void findSex() = 0;
-
 };
 
 

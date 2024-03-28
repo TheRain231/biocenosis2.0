@@ -5,7 +5,7 @@
 #ifndef BIOCENOSIS_GRASSEATERS_H
 #define BIOCENOSIS_GRASSEATERS_H
 #include "Alives.h"
-
+#include "Grass.h"
 class Grasseaters: public Alives {
 public:
     Grasseaters();

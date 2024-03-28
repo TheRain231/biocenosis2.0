@@ -9,11 +9,11 @@ Alives::~Alives() {
 }
 
 Alives::Alives(): Entity() {
-    currentState = eat;
+    currentState = walk;
 }
 
 Alives::Alives(const float x, const float y): Entity(x, y){
-    currentState = eat;
+    currentState = walk;
 }
 
 void Alives::update() {
@@ -31,6 +31,9 @@ void Alives::update() {
     }
     else if (needOfSex > SEX){
         currentState = sex;
+    }
+    else {
+        currentState = walk;
     }
     checkState();
 }
@@ -52,3 +55,4 @@ void Alives::checkState(){
 void Alives::move(const float x, const float y) {
     this->shape.move(sf::Vector2f(x, y));
 }
+
