@@ -6,7 +6,7 @@
 #define BIOCENOSIS_ALIVES_H
 #include "Entity.h"
 
-class Alives: Entity {
+class Alives: public Entity {
 protected:
     enum State {
         sex, eat, dead
@@ -24,11 +24,10 @@ public:
     void update();
     void checkState();
 
-    virtual void move(const float x, const float y);
-    virtual void findFood();
-    virtual void findSex();
-    virtual void deleteObject();
-
+    void move(const float x, const float y);
+    virtual void findFood() = 0;
+    virtual void findSex() = 0;
+    virtual void deleteObject() = 0;
 };
 
 

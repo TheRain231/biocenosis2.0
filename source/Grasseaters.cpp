@@ -3,3 +3,19 @@
 //
 
 #include "Grasseaters.h"
+
+Grasseaters::Grasseaters() : Alives() {
+    this->texture.loadFromFile("textures/sheep.png");
+}
+
+void Grasseaters::findFood() {
+
+}
+
+void Grasseaters::findSex() {
+
+}
+
+void Grasseaters::deleteObject() {
+
+}

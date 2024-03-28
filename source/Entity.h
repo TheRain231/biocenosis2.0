@@ -8,7 +8,7 @@
 #include "defines.h"
 
 class Entity {
-protected:
+public:
     sf::Texture texture;
     sf::RectangleShape shape;
 public:
@@ -16,8 +16,8 @@ public:
     Entity(const float x, const float y);
     ~Entity();
 
-    virtual void update();
-    virtual void render(sf::RenderTarget* target);
+    virtual void update() = 0;
+    void render(sf::RenderTarget* target);
 
 };
 

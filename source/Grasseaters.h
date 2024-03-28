@@ -6,10 +6,14 @@
 #define BIOCENOSIS_GRASSEATERS_H
 #include "Alives.h"
 
-class Grasseaters: Alives {
+class Grasseaters: public Alives {
 public:
     Grasseaters();
     ~Grasseaters();
+
+    void findFood();
+    void findSex();
+    void deleteObject();
 };
 
 

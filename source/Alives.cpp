@@ -49,14 +49,3 @@ void Alives::move(const float x, const float y) {
     this->shape.move(sf::Vector2f(x, y));
 }
 
-void Alives::findFood() {
-
-}
-
-void Alives::findSex() {
-
-}
-
-void Alives::deleteObject() {
-
-}
