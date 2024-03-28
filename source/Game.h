@@ -7,6 +7,7 @@
 
 #include "defines.h"
 #include "Grasseaters.h"
+#include "Hunter.h"
 
 class Game
 {

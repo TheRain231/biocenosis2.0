@@ -5,7 +5,7 @@
 #include "Entity.h"
 
 Entity::Entity() {
-    //this->shape.setOrigin(-(rand() % WINDOW_WIDTH), -(rand() % WINDOW_HEIGHT));
+    this->shape.setOrigin(-(rand() % (WINDOW_WIDTH - SPRITE_SIZE)), -(rand() % (WINDOW_HEIGHT - SPRITE_SIZE)));
 }
 
 Entity::Entity(const float x, const float y) {

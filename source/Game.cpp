@@ -2,8 +2,8 @@
 
 
 void Game::initWindow() {
-    this->window = new sf::RenderWindow(sf::VideoMode(800, 600), "biocenosis");
-    this->window->setFramerateLimit(100);
+    this->window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
+    this->window->setFramerateLimit(FPS);
 }
 
 Game::Game() {
@@ -36,8 +36,9 @@ Game::~Game() {
 }
 
 void Game::run() {
-    entities.resize(1);
+    entities.resize(2);
     entities[0] = new Grasseaters();
+    entities[1] = new Hunter();
 
     backgroundTexture.loadFromFile("textures/background.png");
     background.setSize(sf::Vector2f(WINDOW_WIDTH, WINDOW_HEIGHT));

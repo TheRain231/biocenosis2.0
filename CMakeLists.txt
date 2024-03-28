@@ -11,7 +11,9 @@ set(SOURCE_FILES source/main.cpp
         source/Grasseaters.cpp
         source/Grasseaters.h
         source/Alives.cpp
-        source/Alives.h)
+        source/Alives.h
+        source/Hunter.cpp
+        source/Hunter.h)
 add_executable(Biocenosis ${SOURCE_FILES})
 
 # Добавление textures
