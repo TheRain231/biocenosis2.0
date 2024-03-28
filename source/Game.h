@@ -17,14 +17,14 @@ private:
 
     sf::RenderWindow *window;
     sf::Event sfEvent;
+
     void initWindow();
     void initGrasseaters();
     void initHunters();
+    void initBackground();
 public:
     Game();
     virtual ~Game();
-
-    //funcs
 
     void updateSFMLEvents();
     void update();
