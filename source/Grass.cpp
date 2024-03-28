@@ -5,7 +5,6 @@
 #include "Grass.h"
 
 Grass::Grass() : Entity() {
-    this->texture.loadFromFile("textures/grass.png");
     this->shape.setSize(sf::Vector2f(SPRITE_SIZE, SPRITE_SIZE));
     this->shape.setTexture(&texture);
 }

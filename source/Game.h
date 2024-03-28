@@ -9,6 +9,7 @@
 #include "Grass.h"
 #include "Grasseaters.h"
 #include "Hunter.h"
+#include "Rain.h"
 
 class Game
 {
@@ -24,6 +25,7 @@ private:
     void initGrasseaters();
     void initHunters();
     void initBackground();
+    void initRain();
 
 public:
     Game();

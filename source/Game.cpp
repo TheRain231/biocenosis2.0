@@ -30,6 +30,11 @@ void Game::initGrass() {
         Grass::grass.push_back(new Grass());
 }
 
+void Game::initRain() {
+    Rain::rain.push_back(new Rain(0,0));
+    Rain::rain.push_back(new Rain(0,WINDOW_HEIGHT));
+}
+
 
 Game::Game() {
     this->initWindow();
@@ -37,6 +42,7 @@ Game::Game() {
     this->initGrasseaters();
     this->initHunters();
     this->initBackground();
+    this->initRain();
 }
 
 void Game::updateSFMLEvents() {
@@ -56,6 +62,7 @@ void Game::render() {
     Grass::renderVector(this->window);
     Grasseaters::renderVector(this->window);
     Hunter::renderVector(this->window);
+    Rain::renderVector(this->window);
     this->window->display();
 }
 
@@ -69,4 +76,5 @@ void Game::run() {
         this->render();
     }
 }
+
 

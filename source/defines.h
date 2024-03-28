@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include <cmath>
 
 #define WINDOW_TITLE "Best Game"
 #define FPS 20
@@ -16,3 +17,5 @@
 #define HUNGER_DEATH 100
 #define HUNGER 30
 #define SEX 50
+
+#define RAIN_SPEED 20
