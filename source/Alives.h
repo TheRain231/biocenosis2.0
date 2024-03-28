@@ -27,7 +27,7 @@ public:
     void move(const float x, const float y);
     virtual void findFood() = 0;
     virtual void findSex() = 0;
-    virtual void deleteObject() = 0;
+
 };
 
 

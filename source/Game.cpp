@@ -24,8 +24,16 @@ void Game::initBackground() {
 }
 
 
+void Game::initGrass() {
+    Grass::texture.loadFromFile("textures/grass.png");
+    for (int i = 0; i < GRASS_START; i++)
+        Grass::grass.push_back(new Grass());
+}
+
+
 Game::Game() {
     this->initWindow();
+    this->initGrass();
     this->initGrasseaters();
     this->initHunters();
     this->initBackground();
@@ -45,6 +53,7 @@ void Game::update() {
 void Game::render() {
     this->window->clear();
     this->window->draw(background);
+    Grass::renderVector(this->window);
     Grasseaters::renderVector(this->window);
     Hunter::renderVector(this->window);
     this->window->display();

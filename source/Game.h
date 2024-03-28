@@ -6,6 +6,7 @@
 #include <cstdlib>
 
 #include "defines.h"
+#include "Grass.h"
 #include "Grasseaters.h"
 #include "Hunter.h"
 
@@ -19,12 +20,14 @@ private:
     sf::Event sfEvent;
 
     void initWindow();
+    void initGrass();
     void initGrasseaters();
     void initHunters();
     void initBackground();
+
 public:
     Game();
-    virtual ~Game();
+    ~Game();
 
     void updateSFMLEvents();
     void update();

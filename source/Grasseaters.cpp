@@ -5,7 +5,6 @@
 #include "Grasseaters.h"
 
 Grasseaters::Grasseaters() : Alives() {
-    this->texture.loadFromFile("textures/sheep.png");
     this->shape.setSize(sf::Vector2f(SPRITE_SIZE, SPRITE_SIZE));
     this->shape.setTexture(&texture);
 }

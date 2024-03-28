@@ -17,7 +17,7 @@ public:
 
     virtual void update() = 0;
     void render(sf::RenderTarget* target);
-
+    virtual void deleteObject() = 0;
 };
 
 

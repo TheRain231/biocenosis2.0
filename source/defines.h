@@ -8,6 +8,7 @@
 
 #define SPRITE_SIZE 50
 
+#define GRASS_START 10
 #define GRASSEATERS_START 10
 #define HUNTERS_START 10
 
