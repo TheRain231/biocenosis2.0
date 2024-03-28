@@ -5,7 +5,6 @@
 #include "Hunter.h"
 
 Hunter::Hunter() : Alives() {
-    this->texture.loadFromFile("textures/hunter.png");
     this->shape.setSize(sf::Vector2f(SPRITE_SIZE, SPRITE_SIZE));
     this->shape.setTexture(&texture);
 }
@@ -20,4 +19,8 @@ void Hunter::findSex() {
 
 void Hunter::deleteObject() {
 
+}
+
+void Hunter::setTexture() {
+    texture.loadFromFile("textures/sheep.png");
 }
