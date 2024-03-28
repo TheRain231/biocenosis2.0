@@ -1,6 +1,5 @@
 #include "Game.h"
 
-
 void Game::initWindow() {
     this->window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
     this->window->setFramerateLimit(FPS);
@@ -24,10 +23,12 @@ void Game::update() {
 void Game::render() {
     this->window->clear();
     this->window->draw(background);
-    for (auto & entity: entities){
-        //entity->move(1, 1);
-        entity->render(this->window);
-    }
+    //for (auto & entity: Grasseaters::grasseaters){
+    //    //entity->move(1, 1);
+    //     entity.render(this->window);
+    //}
+    Grasseaters::renderGrasseaters(this->window);
+
     this->window->display();
 }
 
@@ -36,10 +37,6 @@ Game::~Game() {
 }
 
 void Game::run() {
-    entities.resize(2);
-    entities[0] = new Grasseaters();
-    entities[1] = new Hunter();
-
     backgroundTexture.loadFromFile("textures/background.png");
     background.setSize(sf::Vector2f(WINDOW_WIDTH, WINDOW_HEIGHT));
     background.setTexture(&backgroundTexture);
