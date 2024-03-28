@@ -21,3 +21,11 @@ void Grasseaters::findSex() {
 void Grasseaters::deleteObject() {
 
 }
+
+void Grasseaters::renderVector(sf::RenderTarget* target) {
+    for (auto &eater : grasseaters) {
+        eater->render(target);
+    }
+}
+
+std::vector<Grasseaters*> Grasseaters::grasseaters;

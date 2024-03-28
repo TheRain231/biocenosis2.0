@@ -6,8 +6,14 @@ void Game::initWindow() {
     this->window->setFramerateLimit(FPS);
 }
 
+void Game::initGrasseaters() {
+    for (int i = 0; i < 10; i++)
+        Grasseaters::grasseaters.push_back(new Grasseaters());
+}
+
 Game::Game() {
     this->initWindow();
+    this->initGrasseaters();
 }
 
 void Game::updateSFMLEvents() {
@@ -24,10 +30,7 @@ void Game::update() {
 void Game::render() {
     this->window->clear();
     this->window->draw(background);
-    for (auto & entity: entities){
-        //entity->move(1, 1);
-        entity->render(this->window);
-    }
+    Grasseaters::renderVector(this->window);
     this->window->display();
 }
 
@@ -36,9 +39,6 @@ Game::~Game() {
 }
 
 void Game::run() {
-    entities.resize(2);
-    entities[0] = new Grasseaters();
-    entities[1] = new Hunter();
 
     backgroundTexture.loadFromFile("textures/background.png");
     background.setSize(sf::Vector2f(WINDOW_WIDTH, WINDOW_HEIGHT));
