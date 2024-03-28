@@ -10,11 +10,13 @@ class Grasseaters: public Alives {
 public:
     Grasseaters();
     ~Grasseaters();
-    static std::vector<Grasseaters>grasseaters;
+
     void findFood();
     void findSex();
     void deleteObject();
-    static void renderGrasseaters(sf::RenderTarget *target);
+
+    static std::vector<Grasseaters*> grasseaters;
+    static void renderVector(sf::RenderTarget* target);
 };
 
 

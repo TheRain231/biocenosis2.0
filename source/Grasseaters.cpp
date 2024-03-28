@@ -8,9 +8,6 @@ Grasseaters::Grasseaters() : Alives() {
     this->texture.loadFromFile("textures/sheep.png");
     this->shape.setSize(sf::Vector2f(SPRITE_SIZE, SPRITE_SIZE));
     this->shape.setTexture(&texture);
-    for (int i = 0 ; i < 10 ; i++){
-        grasseaters.push_back(Grasseaters());
-    }
 }
 
 void Grasseaters::findFood() {
@@ -25,12 +22,10 @@ void Grasseaters::deleteObject() {
 
 }
 
-Grasseaters::~Grasseaters(){
-
+void Grasseaters::renderVector(sf::RenderTarget* target) {
+    for (auto &eater : grasseaters) {
+        eater->render(target);
+    }
 }
 
-void Grasseaters::renderGrasseaters(sf::RenderTarget *target) {
-    //for (auto & entity: Grasseaters::grasseaters){
-    //     entity.render(target);
-    //}
-}
+std::vector<Grasseaters*> Grasseaters::grasseaters;
