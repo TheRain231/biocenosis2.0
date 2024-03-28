@@ -11,9 +11,15 @@ void Game::initGrasseaters() {
         Grasseaters::grasseaters.push_back(new Grasseaters());
 }
 
+void Game::initHunters() {
+    for (int i = 0; i < 10; i++)
+        Hunter::hunters.push_back(new Hunter());
+}
+
 Game::Game() {
     this->initWindow();
     this->initGrasseaters();
+    this->initHunters();
 }
 
 void Game::updateSFMLEvents() {
@@ -31,6 +37,7 @@ void Game::render() {
     this->window->clear();
     this->window->draw(background);
     Grasseaters::renderVector(this->window);
+    Hunter::renderVector(this->window);
     this->window->display();
 }
 

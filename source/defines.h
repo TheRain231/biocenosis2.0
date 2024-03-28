@@ -8,6 +8,9 @@
 
 #define SPRITE_SIZE 50
 
+#define GRASSEATERS_START 10
+#define HUNTERS_START 10
+
 #define LIFE_TIME 300
 #define HUNGER_DEATH 100
 #define HUNGER 30

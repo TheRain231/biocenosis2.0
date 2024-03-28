@@ -19,6 +19,7 @@ private:
     sf::Event sfEvent;
     void initWindow();
     void initGrasseaters();
+    void initHunters();
 public:
     Game();
     virtual ~Game();

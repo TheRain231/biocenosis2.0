@@ -14,6 +14,9 @@ public:
     void findFood();
     void findSex();
     void deleteObject();
+
+    static std::vector<Hunter*> hunters;
+    static void renderVector(sf::RenderTarget* target);
 };
 
 
