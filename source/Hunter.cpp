@@ -28,4 +28,5 @@ void Hunter::renderVector(sf::RenderTarget* target) {
     }
 }
 
+sf::Texture Hunter::texture;
 std::vector<Hunter*> Hunter::hunters;

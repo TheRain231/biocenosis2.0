@@ -7,12 +7,14 @@ void Game::initWindow() {
 }
 
 void Game::initGrasseaters() {
-    for (int i = 0; i < 10; i++)
+    Grasseaters::texture.loadFromFile("textures/sheep.png");
+    for (int i = 0; i < GRASSEATERS_START; i++)
         Grasseaters::grasseaters.push_back(new Grasseaters());
 }
 
 void Game::initHunters() {
-    for (int i = 0; i < 10; i++)
+    Hunter::texture.loadFromFile("textures/hunter.png");
+    for (int i = 0; i < HUNTERS_START; i++)
         Hunter::hunters.push_back(new Hunter());
 }
 

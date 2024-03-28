@@ -29,3 +29,4 @@ void Grasseaters::renderVector(sf::RenderTarget* target) {
 }
 
 std::vector<Grasseaters*> Grasseaters::grasseaters;
+sf::Texture Grasseaters::texture;

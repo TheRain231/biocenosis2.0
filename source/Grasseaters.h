@@ -16,6 +16,7 @@ public:
     void deleteObject();
 
     static std::vector<Grasseaters*> grasseaters;
+    static sf::Texture texture;
     static void renderVector(sf::RenderTarget* target);
 };
 

@@ -15,6 +15,7 @@ public:
     void findSex();
     void deleteObject();
 
+    static sf::Texture texture;
     static std::vector<Hunter*> hunters;
     static void renderVector(sf::RenderTarget* target);
 };
