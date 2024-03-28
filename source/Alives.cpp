@@ -4,6 +4,10 @@
 
 #include "Alives.h"
 
+Alives::~Alives() {
+
+}
+
 Alives::Alives(): Entity() {
     currentState = eat;
 }

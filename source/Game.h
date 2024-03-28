@@ -11,6 +11,9 @@
 class Game
 {
 private:
+    sf::RectangleShape background;
+    sf::Texture backgroundTexture;
+
     std::vector<Entity*> entities;
     sf::RenderWindow *window;
     sf::Event sfEvent;
