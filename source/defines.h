@@ -7,3 +7,8 @@
 #define WINDOW_HEIGHT 900
 
 #define SPRITE_SIZE 50
+
+#define LIFE_TIME 300
+#define HUNGER_DEATH 100
+#define HUNGER 30
+#define SEX 50

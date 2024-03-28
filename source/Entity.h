@@ -18,7 +18,7 @@ public:
 
     virtual void update();
     virtual void render(sf::RenderTarget* target);
-    virtual void move(const float x, const float y);
+
 };
 
 
