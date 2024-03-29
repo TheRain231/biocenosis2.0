@@ -71,7 +71,6 @@ void Game::update() {
     for (auto obj : Grasseaters::grasseaters){
         obj->findWalk();
     }
-    Rain::updateRain();
 }
 
 void Game::render() {
