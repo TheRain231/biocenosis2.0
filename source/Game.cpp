@@ -71,12 +71,14 @@ void Game::update() {
     for (auto obj : Grasseaters::grasseaters){
         obj->findWalk();
     }
+    //дождь идет если     Rain::rain[0]->checkState()==true
+
 }
 
 void Game::render() {
     this->window->clear();
     this->window->draw(background);
-
+    Rain::rain[0]->checkState();
     Grass::renderVector(this->window);
     Grasseaters::renderVector(this->window);
     Hunter::renderVector(this->window);
