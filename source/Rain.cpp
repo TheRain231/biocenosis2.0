@@ -21,7 +21,6 @@ void Rain::renderVector(sf::RenderTarget *target) {
     }
     if (rain[0]->shape.getOrigin().y<-WINDOW_HEIGHT){
         rain[0]->shape.setOrigin(0,WINDOW_HEIGHT);
-        std::cout << 1;
     }
     else if (rain[1]->shape.getOrigin().y<-WINDOW_HEIGHT){
         rain[1]->shape.setOrigin(0,WINDOW_HEIGHT);

@@ -55,19 +55,23 @@ void Alives::checkState(){
 }
 
 void Alives::move(const float x, const float y) {
-    if (this->shape.getPosition().x + x > 0 && this->shape.getPosition().x + x < WINDOW_HEIGHT - SPRITE_SIZE)
-        this->shape.move(x * Game::dt, 0);
-    if (this->shape.getPosition().y + y > 0 && this->shape.getPosition().y + y < WINDOW_HEIGHT - SPRITE_SIZE)
-        this->shape.move(0, y*Game::dt);
+    if (this->shape.getPosition().x+x>0 && this->shape.getPosition().y+y>0 || this->shape.getPosition().x+x<WINDOW_HEIGHT-SPRITE_SIZE && this->shape.getPosition().y+y<WINDOW_HEIGHT-SPRITE_SIZE)
+        this->shape.move(x, y);
 }
+
+void Alives::move(sf::Vector2f change) {
+    if (this->shape.getPosition().x+change.x>0 && this->shape.getPosition().y+change.y>0 || this->shape.getPosition().x+change.x<WINDOW_HEIGHT-SPRITE_SIZE && this->shape.getPosition().y+change.y<WINDOW_HEIGHT-SPRITE_SIZE)
+        this->shape.move(change);
+}
+
 void Alives::findWalk() {
-    float dx = fmodf(destination.x - this->shape.getPosition().x, MOVEMENT_SPEED);
-    float dy = fmodf(destination.y - this->shape.getPosition().y, MOVEMENT_SPEED);
-    this->move(dx > 0 ? fmax(dx,2) : fmin (dx,-2),dy > 0 ? fmax(dy,2) : fmin (dy,-2));
+    sf::Vector2f direction = this->destination - this->shape.getPosition();
+    float lenght = sqrt(direction.x * direction.x + direction.y * direction.y);
+    this->move(direction / lenght * float(MOVEMENT_SPEED) * Game::dt);
 }
 
 void Alives::setRandomDestination() {
-    this->destination = sf::Vector2f(rand() % (WINDOW_WIDTH-SPRITE_SIZE), rand() % (WINDOW_HEIGHT-SPRITE_SIZE));
+    this->destination = sf::Vector2f(rand() % (WINDOW_WIDTH - SPRITE_SIZE), rand() % (WINDOW_HEIGHT - SPRITE_SIZE));
 }
 
 void Alives::checkDestination(){

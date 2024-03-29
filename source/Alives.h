@@ -24,10 +24,12 @@ public:
     void update();
     void checkState();
     void findWalk();
+
     void setRandomDestination();
     void checkDestination();
 
     void move(const float x, const float y);
+    void move(sf::Vector2f change);
     virtual void findFood() = 0;
     virtual void findSex() = 0;
 
