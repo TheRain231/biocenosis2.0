@@ -12,6 +12,7 @@ public:
     ~Rain();
     static void renderVector(sf::RenderTarget* target);
     static std::vector<Rain*> rain;
+    static void updateRain();
 private:
     void render(sf::RenderTarget* target);
     sf::RectangleShape shape;

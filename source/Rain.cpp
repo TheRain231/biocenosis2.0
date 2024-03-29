@@ -16,6 +16,16 @@ Rain::~Rain() {
 }
 
 void Rain::renderVector(sf::RenderTarget *target) {
+    for (auto &obj : rain) {
+        obj->render(target);
+    }
+}
+
+void Rain::render(sf::RenderTarget *target) {
+    target->draw(this->shape);
+}
+
+void Rain::updateRain() {
     for (auto & obj:rain){
         obj->shape.setOrigin(0,obj->shape.getOrigin().y-RAIN_SPEED);
     }
@@ -25,13 +35,6 @@ void Rain::renderVector(sf::RenderTarget *target) {
     else if (rain[1]->shape.getOrigin().y<-WINDOW_HEIGHT){
         rain[1]->shape.setOrigin(0,WINDOW_HEIGHT);
     }
-    for (auto &obj : rain) {
-        obj->render(target);
-    }
-}
-
-void Rain::render(sf::RenderTarget *target) {
-    target->draw(this->shape);
 }
 
 

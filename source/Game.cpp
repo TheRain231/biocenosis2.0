@@ -67,12 +67,11 @@ void Game::update() {
     //update all entities
     for (auto obj : Hunter::hunters){
         obj->findWalk();
-        obj->checkDestination();
     }
     for (auto obj : Grasseaters::grasseaters){
         obj->findWalk();
-        obj->checkDestination();
     }
+    Rain::updateRain();
 }
 
 void Game::render() {
