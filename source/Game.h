@@ -35,5 +35,8 @@ public:
     void update();
     void render();
     void run();
+    static  sf::Clock dtClock;
+    static float dt;
+    static void updatedt();
 };
 #endif

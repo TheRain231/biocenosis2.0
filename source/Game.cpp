@@ -1,7 +1,7 @@
 #include "Game.h"
 
 void Game::initWindow() {
-    this->window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH+SPRITE_SIZE, WINDOW_HEIGHT+SPRITE_SIZE), WINDOW_TITLE);
+    this->window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
     this->window->setFramerateLimit(FPS);
 }
 
@@ -19,7 +19,7 @@ void Game::initHunters() {
 
 void Game::initBackground() {
     backgroundTexture.loadFromFile("textures/background.png");
-    background.setSize(sf::Vector2f(WINDOW_WIDTH+SPRITE_SIZE, WINDOW_HEIGHT+SPRITE_SIZE));
+    background.setSize(sf::Vector2f(WINDOW_WIDTH, WINDOW_HEIGHT));
     background.setTexture(&backgroundTexture);
 }
 
@@ -54,6 +54,7 @@ void Game::updateSFMLEvents() {
 
 void Game::update() {
     this->updateSFMLEvents();
+    //update all entities
     for (auto obj : Hunter::hunters){
         obj->findWalk();
     }
@@ -65,10 +66,12 @@ void Game::update() {
 void Game::render() {
     this->window->clear();
     this->window->draw(background);
+
     Grass::renderVector(this->window);
     Grasseaters::renderVector(this->window);
     Hunter::renderVector(this->window);
     Rain::renderVector(this->window);
+
     this->window->display();
 }
 
@@ -78,8 +81,15 @@ Game::~Game() {
 
 void Game::run() {
     while (this->window->isOpen()) {
+        Game::updatedt();
         this->update();
         this->render();
     }
 }
 
+void Game::updatedt() {
+    dt=dtClock.restart().asSeconds();
+}
+
+sf::Clock Game::dtClock;
+float Game::dt;

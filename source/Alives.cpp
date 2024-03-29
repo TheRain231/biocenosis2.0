@@ -51,8 +51,9 @@ void Alives::checkState(){
 }
 
 void Alives::move(const float x, const float y) {
-    if (this->shape.getOrigin().x+x<0 && this->shape.getOrigin().y+y<0 && this->shape.getOrigin().x+x>-WINDOW_HEIGHT && this->shape.getOrigin().y+y>-WINDOW_HEIGHT)
-        this->shape.move(x,y);
+    std::cout<<Game::dt<<std::endl;
+    if (this->shape.getOrigin().x+x<0 && this->shape.getOrigin().y+y<0 && this->shape.getOrigin().x+x>-WINDOW_HEIGHT+SPRITE_SIZE && this->shape.getOrigin().y+y>-WINDOW_HEIGHT+SPRITE_SIZE)
+        this->shape.setOrigin(this->shape.getOrigin().x+x*Game::dt,this->shape.getOrigin().y+y*Game::dt);
 }
 
 void Alives::findWalk() {

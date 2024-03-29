@@ -2,10 +2,10 @@
 #include <cmath>
 
 #define WINDOW_TITLE "Best Game"
-#define FPS 30
+#define FPS 10
 
-#define WINDOW_WIDTH 850
-#define WINDOW_HEIGHT 850
+#define WINDOW_WIDTH 900
+#define WINDOW_HEIGHT 900
 
 #define SPRITE_SIZE 50
 
@@ -19,4 +19,4 @@
 #define SEX 50
 
 #define RAIN_SPEED 20
-#define MOVEMENT_SPEED 100
+#define MOVEMENT_SPEED 200
