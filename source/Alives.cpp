@@ -67,7 +67,8 @@ void Alives::move(sf::Vector2f change) {
 void Alives::findWalk() {
     sf::Vector2f direction = this->destination - this->shape.getPosition();
     float lenght = sqrt(direction.x * direction.x + direction.y * direction.y);
-    this->move(direction / lenght * float(MOVEMENT_SPEED) * Game::dt);
+    sf::Vector2f normalized = direction / lenght * float(MOVEMENT_SPEED) * Game::dt;
+    this->move(normalized.x - (normalized.x > 0 ? remainderf(normalized.x, 1.0) : -(remainderf(normalized.x, 1.0) + 1)), normalized.y - (normalized.y > 0 ? remainderf(normalized.y, 1.0) : -(remainderf(normalized.y, 1.0) + 1)));
 }
 
 void Alives::setRandomDestination() {
