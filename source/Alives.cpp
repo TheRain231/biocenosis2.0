@@ -34,6 +34,8 @@ void Alives::update() {
         currentState = walk;
     }
     checkState();
+
+
 }
 
 void Alives::checkState(){
@@ -47,16 +49,27 @@ void Alives::checkState(){
         case sex:
             findSex();
             break;
+        case walk:
+            break;
     }
 }
 
 void Alives::move(const float x, const float y) {
-    std::cout<<Game::dt<<std::endl;
-    if (this->shape.getOrigin().x+x<0 && this->shape.getOrigin().y+y<0 && this->shape.getOrigin().x+x>-WINDOW_HEIGHT+SPRITE_SIZE && this->shape.getOrigin().y+y>-WINDOW_HEIGHT+SPRITE_SIZE)
-        this->shape.setOrigin(this->shape.getOrigin().x+x*Game::dt,this->shape.getOrigin().y+y*Game::dt);
+    //std::cout<<Game::dt<<std::endl;
+    if (this->shape.getPosition().x+x>0 && this->shape.getPosition().y+y>0 && this->shape.getPosition().x+x<WINDOW_HEIGHT-SPRITE_SIZE && this->shape.getPosition().y+y<WINDOW_HEIGHT-SPRITE_SIZE)
+        this->shape.move(x*Game::dt, y*Game::dt);
 }
 
 void Alives::findWalk() {
-    this->move(rand()%MOVEMENT_SPEED-MOVEMENT_SPEED/2,rand()%MOVEMENT_SPEED-MOVEMENT_SPEED/2);
+    this->move(fmodf(destination.x - this->shape.getPosition().x, MOVEMENT_SPEED), fmodf(destination.y - this->shape.getPosition().y, MOVEMENT_SPEED));
 }
 
+void Alives::setRandomDestination() {
+    this->destination = sf::Vector2f(rand() % WINDOW_WIDTH, rand() % WINDOW_HEIGHT);
+}
+
+void Alives::checkDestination(){
+    if (abs(this->shape.getPosition().x - this->destination.x) < 5 && abs(this->shape.getPosition().y - this->destination.y) < 5) {
+        setRandomDestination();
+    }
+}

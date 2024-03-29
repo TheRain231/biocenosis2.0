@@ -2,7 +2,7 @@
 #include <cmath>
 
 #define WINDOW_TITLE "Best Game"
-#define FPS 10
+#define FPS 60
 
 #define WINDOW_WIDTH 900
 #define WINDOW_HEIGHT 900

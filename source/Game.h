@@ -26,6 +26,7 @@ private:
     void initHunters();
     void initBackground();
     void initRain();
+    void initDestination();
 
 public:
     Game();

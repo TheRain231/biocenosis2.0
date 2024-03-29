@@ -35,6 +35,15 @@ void Game::initRain() {
     Rain::rain.push_back(new Rain(0,WINDOW_HEIGHT));
 }
 
+void Game::initDestination() {
+    for (auto obj : Hunter::hunters){
+        obj->setRandomDestination();
+    }
+    for (auto obj : Grasseaters::grasseaters){
+        obj->setRandomDestination();
+    }
+}
+
 
 Game::Game() {
     this->initWindow();
@@ -43,6 +52,7 @@ Game::Game() {
     this->initHunters();
     this->initBackground();
     this->initRain();
+    this->initDestination();
 }
 
 void Game::updateSFMLEvents() {
@@ -57,9 +67,11 @@ void Game::update() {
     //update all entities
     for (auto obj : Hunter::hunters){
         obj->findWalk();
+        obj->checkDestination();
     }
     for (auto obj : Grasseaters::grasseaters){
         obj->findWalk();
+        obj->checkDestination();
     }
 }
 

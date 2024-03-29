@@ -24,6 +24,8 @@ public:
     void update();
     void checkState();
     void findWalk();
+    void setRandomDestination();
+    void checkDestination();
 
     void move(const float x, const float y);
     virtual void findFood() = 0;
