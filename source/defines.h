@@ -18,5 +18,6 @@
 #define HUNGER 30
 #define SEX 50
 
-#define RAIN_SPEED 20
+#define RAIN_SPEED 10
+#define RAIN_CONST 300
 #define MOVEMENT_SPEED 200

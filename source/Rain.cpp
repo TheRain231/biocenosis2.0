@@ -16,8 +16,11 @@ Rain::~Rain() {
 }
 
 void Rain::renderVector(sf::RenderTarget *target) {
-    for (auto &obj : rain) {
-        obj->render(target);
+    if (rain[0]->checkState()) {
+        rain[0]->updateRain();
+        for (auto &obj: rain) {
+            obj->render(target);
+        }
     }
 }
 
@@ -35,6 +38,19 @@ void Rain::updateRain() {
     else if (rain[1]->shape.getOrigin().y<-WINDOW_HEIGHT){
         rain[1]->shape.setOrigin(0,WINDOW_HEIGHT);
     }
+}
+
+bool Rain::checkState() {
+    timer++;
+    if (timer>raintime){
+        timer=0;
+        rainstart=rand()%RAIN_CONST+RAIN_CONST;
+        raintime=rainstart+rand()%RAIN_CONST;
+    }
+    else if (timer>rainstart){
+        return 1;
+    }
+    return 0;
 }
 
 
