@@ -11,7 +11,7 @@ Hunter::Hunter() : Alives() {
 
 void Hunter::findFood() {
     float localMin = 100000;
-    Grasseaters *newHusband = new Grasseaters();
+    Grasseaters *newHusband; //new Grasseaters();
     for (auto &gras: Grasseaters::grasseaters) {
         float distance = sqrt((this->shape.getOrigin().x - gras->shape.getOrigin().x) *
                               (this->shape.getOrigin().x - gras->shape.getOrigin().x) +
@@ -29,7 +29,7 @@ void Hunter::findFood() {
 
 void Hunter::findSex() {
     float localMin = 100000;
-    Hunter *newHusband = new Hunter();
+    Hunter *newHusband; // new Hunter();
     for (auto & who: hunters) {
         float distance = sqrt((this->shape.getOrigin().x - who->shape.getOrigin().x) * (this->shape.getOrigin().x - who->shape.getOrigin().x) + (this->shape.getOrigin().y - who->shape.getOrigin().y) * (this->shape.getOrigin().y - who->shape.getOrigin().y));
         if (distance<localMin) {

@@ -3,16 +3,14 @@
 //
 
 #include "Alives.h"
+#include <iostream>
+#include "Game.h"
 
 Alives::~Alives() {
 
 }
 
 Alives::Alives(): Entity() {
-    currentState = walk;
-}
-
-Alives::Alives(const float x, const float y): Entity(x, y){
     currentState = walk;
 }
 
@@ -53,6 +51,11 @@ void Alives::checkState(){
 }
 
 void Alives::move(const float x, const float y) {
-    this->shape.move(sf::Vector2f(x, y));
+    if (this->shape.getOrigin().x+x<0 && this->shape.getOrigin().y+y<0 && this->shape.getOrigin().x+x>-WINDOW_HEIGHT && this->shape.getOrigin().y+y>-WINDOW_HEIGHT)
+        this->shape.move(x,y);
+}
+
+void Alives::findWalk() {
+    this->move(rand()%MOVEMENT_SPEED-MOVEMENT_SPEED/2,rand()%MOVEMENT_SPEED-MOVEMENT_SPEED/2);
 }
 

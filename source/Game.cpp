@@ -1,7 +1,7 @@
 #include "Game.h"
 
 void Game::initWindow() {
-    this->window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_TITLE);
+    this->window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH+SPRITE_SIZE, WINDOW_HEIGHT+SPRITE_SIZE), WINDOW_TITLE);
     this->window->setFramerateLimit(FPS);
 }
 
@@ -19,7 +19,7 @@ void Game::initHunters() {
 
 void Game::initBackground() {
     backgroundTexture.loadFromFile("textures/background.png");
-    background.setSize(sf::Vector2f(WINDOW_WIDTH, WINDOW_HEIGHT));
+    background.setSize(sf::Vector2f(WINDOW_WIDTH+SPRITE_SIZE, WINDOW_HEIGHT+SPRITE_SIZE));
     background.setTexture(&backgroundTexture);
 }
 
@@ -54,6 +54,12 @@ void Game::updateSFMLEvents() {
 
 void Game::update() {
     this->updateSFMLEvents();
+    for (auto obj : Hunter::hunters){
+        obj->findWalk();
+    }
+    for (auto obj : Grasseaters::grasseaters){
+        obj->findWalk();
+    }
 }
 
 void Game::render() {
@@ -76,5 +82,4 @@ void Game::run() {
         this->render();
     }
 }
-
 

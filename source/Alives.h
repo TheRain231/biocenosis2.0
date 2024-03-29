@@ -19,15 +19,16 @@ protected:
 
 public:
     Alives();
-    Alives(const float x, const float y);
     ~Alives();
 
     void update();
     void checkState();
+    void findWalk();
 
     void move(const float x, const float y);
     virtual void findFood() = 0;
     virtual void findSex() = 0;
+
 };
 
 
