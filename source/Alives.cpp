@@ -26,10 +26,10 @@ void Alives::update() {
         //deleteObject();
     //}
     std::cout << hunger << ' ' << needOfSex << '\n';
-    if (hunger > HUNGER){
+    if (hunger > HUNGER && this->currentState == walk){
         findFood();
     }
-    else if (needOfSex > SEX){
+    else if (needOfSex > SEX && this->currentState == walk){
         findSex();
     }
     else {
