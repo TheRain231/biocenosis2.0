@@ -36,20 +36,23 @@ void Hunter::findSex() {
     float localMin = 100000;
     Hunter *newHusband; // new Hunter();
     bool check = false;
-    for (auto & who: hunters) {
-        float distance = sqrt((this->shape.getPosition().x - who->shape.getPosition().x) * (this->shape.getPosition().x - who->shape.getPosition().x) + (this->shape.getPosition().y - who->shape.getPosition().y) * (this->shape.getPosition().y - who->shape.getPosition().y));
-        if (distance<localMin) {
+    for (auto &who: hunters) {
+        float distance = sqrt((this->shape.getPosition().x - who->shape.getPosition().x) *
+                              (this->shape.getPosition().x - who->shape.getPosition().x) +
+                              (this->shape.getPosition().y - who->shape.getPosition().y) *
+                              (this->shape.getPosition().y - who->shape.getPosition().y));
+        if (distance < localMin) {
             check = true;
             localMin = distance;
             newHusband = who;
         }
     }
     if (check) {
-    this->destination.x = (this->shape.getPosition().x + newHusband->shape.getPosition().x) / 2;
-    this->destination.y = (this->shape.getPosition().y + newHusband->shape.getPosition().y) / 2;
-    newHusband->destination = this->destination;
-    this->currentState = sex;
-    newHusband->currentState = sex;
+        this->destination.x = (this->shape.getPosition().x + newHusband->shape.getPosition().x) / 2;
+        this->destination.y = (this->shape.getPosition().y + newHusband->shape.getPosition().y) / 2;
+        newHusband->destination = this->destination;
+        this->currentState = sex;
+        newHusband->currentState = sex;
     }
 }
 
@@ -57,11 +60,11 @@ void Hunter::deleteObject() {
 
 }
 
-void Hunter::renderVector(sf::RenderTarget* target) {
-    for (auto &hunter : hunters) {
+void Hunter::renderVector(sf::RenderTarget *target) {
+    for (auto &hunter: hunters) {
         hunter->render(target);
     }
 }
 
 sf::Texture Hunter::texture;
-std::vector<Hunter*> Hunter::hunters;
+std::vector<Hunter *> Hunter::hunters;

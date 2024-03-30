@@ -31,15 +31,15 @@ void Game::initGrass() {
 }
 
 void Game::initRain() {
-    Rain::rain.push_back(new Rain(0,0));
-    Rain::rain.push_back(new Rain(0,WINDOW_HEIGHT));
+    Rain::rain.push_back(new Rain(0, 0));
+    Rain::rain.push_back(new Rain(0, WINDOW_HEIGHT));
 }
 
 void Game::initDestination() {
-    for (auto obj : Hunter::hunters){
+    for (auto obj: Hunter::hunters) {
         obj->setRandomDestination();
     }
-    for (auto obj : Grasseaters::grasseaters){
+    for (auto obj: Grasseaters::grasseaters) {
         obj->setRandomDestination();
     }
 }
@@ -65,11 +65,11 @@ void Game::updateSFMLEvents() {
 void Game::update() {
     this->updateSFMLEvents();
     //update all entities
-    for (auto obj : Hunter::hunters){
+    for (auto obj: Hunter::hunters) {
         obj->update();
         obj->findWalk();
     }
-    for (auto obj : Grasseaters::grasseaters){
+    for (auto obj: Grasseaters::grasseaters) {
         obj->update();
         obj->findWalk();
     }
@@ -102,7 +102,7 @@ void Game::run() {
 }
 
 void Game::updatedt() {
-    dt=dtClock.restart().asSeconds();
+    dt = dtClock.restart().asSeconds();
 }
 
 sf::Clock Game::dtClock;

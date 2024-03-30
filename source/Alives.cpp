@@ -25,6 +25,7 @@ void Alives::update() {
         //currentState = dead;
         //deleteObject();
     //}
+    std::cout << hunger << ' ' << needOfSex << '\n';
     if (hunger > HUNGER){
         findFood();
     }
@@ -82,6 +83,10 @@ void Alives::checkDestination(){
     if (abs(this->shape.getPosition().x - this->destination.x) < 5 && abs(this->shape.getPosition().y - this->destination.y) < 5) {
         if (this->currentState == sex){
             this->needOfSex = 0;
+            this->update();
+        }
+        if (this->currentState == eat){
+            this->hunger = 0;
             this->update();
         }
         setRandomDestination();
