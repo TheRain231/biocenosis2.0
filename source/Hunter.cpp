@@ -25,9 +25,8 @@ void Hunter::findFood() {
         }
     }
     if (check) {
-
-        this->destination = newHusband->shape.getPosition();
-
+        this->destination.x = newHusband->shape.getPosition().x;
+        this->destination.y = newHusband->shape.getPosition().y;
     }
 
 }
