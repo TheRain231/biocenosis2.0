@@ -43,9 +43,10 @@ void Grasseaters::findSex() {
     if (check) {
     this->destination.x = (this->shape.getPosition().x + newHusband->shape.getPosition().x) / 2;
     this->destination.y = (this->shape.getPosition().y + newHusband->shape.getPosition().y) / 2;
-    newHusband->destination = this->destination;}
-    this->currentState = sex;
-    newHusband->currentState = sex;
+    newHusband->destination = this->destination;
+        this->currentState = sex;
+        newHusband->currentState = sex;}
+
 }
 
 void Grasseaters::deleteObject() {
