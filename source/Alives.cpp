@@ -25,7 +25,8 @@ void Alives::update() {
         //currentState = dead;
         //deleteObject();
     //}
-    if (hunger > HUNGER && this->currentState == walk){
+    //std::cout << this << hunger << '\n';
+    if (hunger > HUNGER && this->currentState == walk || (this->currentState == eat && !strcmp(typeid(this).name(), "P6Hunter"))){
         findFood();
     }
     else if (needOfSex > SEX && this->currentState == walk){
@@ -77,6 +78,7 @@ void Alives::findWalk() {
 void Alives::setRandomDestination() {
     this->destination = sf::Vector2f(rand() % (WINDOW_WIDTH - SPRITE_SIZE), rand() % (WINDOW_HEIGHT - SPRITE_SIZE));
 }
+
 
 void Alives::checkDestination(){
     if (abs(this->shape.getPosition().x - this->destination.x) < 1 && abs(this->shape.getPosition().y - this->destination.y) < 1) {

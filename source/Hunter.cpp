@@ -3,6 +3,7 @@
 //
 
 #include "Hunter.h"
+#include <iostream>
 
 Hunter::Hunter() : Alives() {
     this->shape.setSize(sf::Vector2f(SPRITE_SIZE, SPRITE_SIZE));
@@ -27,6 +28,7 @@ void Hunter::findFood() {
     if (check) {
         this->destination.x = newHusband->shape.getPosition().x;
         this->destination.y = newHusband->shape.getPosition().y;
+        this->currentState = eat;
     }
 
 }
