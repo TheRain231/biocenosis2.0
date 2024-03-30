@@ -18,15 +18,15 @@ void Alives::update() {
     this->hunger += 1;
     this->liveTime += 1;
     this->needOfSex += 1;
-    if (liveTime > LIFE_TIME){
-        currentState = dead;
-    }
-    else if (hunger > HUNGER_DEATH){
-        currentState = dead;
-    }
-    else if (hunger > HUNGER){
+//    if (liveTime > LIFE_TIME){
+//        currentState = dead;
+//    }
+    //else if (hunger > HUNGER_DEATH){
+        //currentState = dead;
+        //deleteObject();
+    //}
+    if (hunger > HUNGER){
         findFood();
-
     }
     else if (needOfSex > SEX){
         findSex();
@@ -34,7 +34,7 @@ void Alives::update() {
     else {
         currentState = walk;
     }
-    checkState();
+    //checkState();
 
 
 }

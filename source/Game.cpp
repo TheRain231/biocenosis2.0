@@ -66,9 +66,11 @@ void Game::update() {
     this->updateSFMLEvents();
     //update all entities
     for (auto obj : Hunter::hunters){
+        obj->update();
         obj->findWalk();
     }
     for (auto obj : Grasseaters::grasseaters){
+        obj->update();
         obj->findWalk();
     }
     //дождь идет если     Rain::rain[0]->checkState()==true
