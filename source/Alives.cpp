@@ -25,14 +25,13 @@ void Alives::update() {
         //currentState = dead;
         //deleteObject();
     //}
-    std::cout << hunger << ' ' << needOfSex << '\n';
     if (hunger > HUNGER && this->currentState == walk){
         findFood();
     }
     else if (needOfSex > SEX && this->currentState == walk){
         findSex();
     }
-    else {
+    else if (this->currentState == walk){
         currentState = walk;
     }
     //checkState();
@@ -80,14 +79,16 @@ void Alives::setRandomDestination() {
 }
 
 void Alives::checkDestination(){
-    if (abs(this->shape.getPosition().x - this->destination.x) < 5 && abs(this->shape.getPosition().y - this->destination.y) < 5) {
+    if (abs(this->shape.getPosition().x - this->destination.x) < 1 && abs(this->shape.getPosition().y - this->destination.y) < 1) {
         if (this->currentState == sex){
             this->needOfSex = 0;
-            this->update();
+            this->currentState = walk;
+            std::cout << "Произошла ебля" << '\n';
         }
         if (this->currentState == eat){
             this->hunger = 0;
-            this->update();
+            this->currentState = walk;
+            std::cout << "Произошел ужин" << '\n';
         }
         setRandomDestination();
     }
