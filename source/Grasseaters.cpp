@@ -25,8 +25,8 @@ void Grasseaters::findFood() {
         }
     }
     if (check) {
-        this->destination.x = (this->shape.getPosition().x + coords.x) / 2;
-        this->destination.y = (this->shape.getPosition().y + coords.y) / 2;
+        this->destination.x = coords.x;
+        this->destination.y =  coords.y;
         this->currentState = eat;
     }
 }
