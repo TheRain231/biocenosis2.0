@@ -25,10 +25,11 @@ void Alives::update() {
         currentState = dead;
     }
     else if (hunger > HUNGER){
-        currentState = eat;
+        findFood();
+
     }
     else if (needOfSex > SEX){
-        currentState = sex;
+        findSex();
     }
     else {
         currentState = walk;

@@ -12,32 +12,40 @@ Grasseaters::Grasseaters() : Alives() {
 void Grasseaters::findFood() {
     float localMin = 100000;
     sf::Vector2f coords;
+    bool check = false;
     for (auto & gras: Grass::grass) {
         float distance = sqrt((this->shape.getOrigin().x - gras->shape.getOrigin().x) * (this->shape.getOrigin().x - gras->shape.getOrigin().x) + (this->shape.getOrigin().y - gras->shape.getOrigin().y) * (this->shape.getOrigin().y - gras->shape.getOrigin().y));
         if (distance<localMin) {
+            check = true;
             localMin = distance;
             coords = gras->shape.getOrigin();
         }
     }
+    if (check) {
     this->destination.x = (this->shape.getOrigin().x + coords.x) / 2;
     this->destination.y = (this->shape.getOrigin().y + coords.y) / 2;
-    //changeState Maybe
+    this->currentState = eat;
+    }
 }
 
 void Grasseaters::findSex() {
     float localMin = 100000;
-    Grasseaters *newHusband = new Grasseaters();
+    Grasseaters *newHusband;
+    bool check = false;
     for (auto & who: grasseaters) {
         float distance = sqrt((this->shape.getOrigin().x - who->shape.getOrigin().x) * (this->shape.getOrigin().x - who->shape.getOrigin().x) + (this->shape.getOrigin().y - who->shape.getOrigin().y) * (this->shape.getOrigin().y - who->shape.getOrigin().y));
         if (distance<localMin) {
+            check = true;
             localMin = distance;
             newHusband = who;
         }
     }
+    if (check) {
     this->destination.x = (this->shape.getOrigin().x + newHusband->shape.getOrigin().x) / 2;
     this->destination.y = (this->shape.getOrigin().y + newHusband->shape.getOrigin().y) / 2;
-    newHusband->destination = this->destination;
-
+    newHusband->destination = this->destination;}
+    this->currentState = sex;
+    newHusband->currentState = sex;
 }
 
 void Grasseaters::deleteObject() {

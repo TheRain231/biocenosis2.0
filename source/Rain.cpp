@@ -5,7 +5,7 @@
 #include "Rain.h"
 
 Rain::Rain(float x, float y) {
-    texture.loadFromFile("textures/rain.png");
+    texture.loadFromFile("../textures/rain.png");
     shape.setSize(sf::Vector2f(WINDOW_WIDTH, WINDOW_HEIGHT));
     shape.setTexture(&texture);
     shape.setOrigin(x,y);
