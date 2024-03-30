@@ -14,10 +14,10 @@ void Hunter::findFood() {
     Grasseaters *newHusband;
     bool check = false;
     for (auto &gras: Grasseaters::grasseaters) {
-        float distance = sqrt((this->shape.getOrigin().x - gras->shape.getOrigin().x) *
-                              (this->shape.getOrigin().x - gras->shape.getOrigin().x) +
-                              (this->shape.getOrigin().y - gras->shape.getOrigin().y) *
-                              (this->shape.getOrigin().y - gras->shape.getOrigin().y));
+        float distance = sqrt((this->shape.getPosition().x - gras->shape.getPosition().x) *
+                              (this->shape.getPosition().x - gras->shape.getPosition().x) +
+                              (this->shape.getPosition().y - gras->shape.getPosition().y) *
+                              (this->shape.getPosition().y - gras->shape.getPosition().y));
         if (distance < localMin) {
             check = true;
             localMin = distance;
@@ -25,8 +25,8 @@ void Hunter::findFood() {
         }
     }
     if (check) {
-        this->destination.x = (this->shape.getOrigin().x + newHusband->shape.getOrigin().x) / 2;
-        this->destination.y = (this->shape.getOrigin().y + newHusband->shape.getOrigin().y) / 2;
+        this->destination.x = (this->shape.getPosition().x + newHusband->shape.getPosition().x) / 2;
+        this->destination.y = (this->shape.getPosition().y + newHusband->shape.getPosition().y) / 2;
         this->currentState = eat;
     }
 
@@ -37,7 +37,7 @@ void Hunter::findSex() {
     Hunter *newHusband; // new Hunter();
     bool check = false;
     for (auto & who: hunters) {
-        float distance = sqrt((this->shape.getOrigin().x - who->shape.getOrigin().x) * (this->shape.getOrigin().x - who->shape.getOrigin().x) + (this->shape.getOrigin().y - who->shape.getOrigin().y) * (this->shape.getOrigin().y - who->shape.getOrigin().y));
+        float distance = sqrt((this->shape.getPosition().x - who->shape.getPosition().x) * (this->shape.getPosition().x - who->shape.getPosition().x) + (this->shape.getPosition().y - who->shape.getPosition().y) * (this->shape.getPosition().y - who->shape.getPosition().y));
         if (distance<localMin) {
             check = true;
             localMin = distance;
@@ -45,8 +45,8 @@ void Hunter::findSex() {
         }
     }
     if (check) {
-    this->destination.x = (this->shape.getOrigin().x + newHusband->shape.getOrigin().x) / 2;
-    this->destination.y = (this->shape.getOrigin().y + newHusband->shape.getOrigin().y) / 2;
+    this->destination.x = (this->shape.getPosition().x + newHusband->shape.getPosition().x) / 2;
+    this->destination.y = (this->shape.getPosition().y + newHusband->shape.getPosition().y) / 2;
     newHusband->destination = this->destination;
     this->currentState = sex;
     newHusband->currentState = sex;

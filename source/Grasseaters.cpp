@@ -14,16 +14,16 @@ void Grasseaters::findFood() {
     sf::Vector2f coords;
     bool check = false;
     for (auto & gras: Grass::grass) {
-        float distance = sqrt((this->shape.getOrigin().x - gras->shape.getOrigin().x) * (this->shape.getOrigin().x - gras->shape.getOrigin().x) + (this->shape.getOrigin().y - gras->shape.getOrigin().y) * (this->shape.getOrigin().y - gras->shape.getOrigin().y));
+        float distance = sqrt((this->shape.getPosition().x - gras->shape.getPosition().x) * (this->shape.getPosition().x - gras->shape.getPosition().x) + (this->shape.getPosition().y - gras->shape.getPosition().y) * (this->shape.getPosition().y - gras->shape.getPosition().y));
         if (distance<localMin) {
             check = true;
             localMin = distance;
-            coords = gras->shape.getOrigin();
+            coords = gras->shape.getPosition();
         }
     }
     if (check) {
-    this->destination.x = (this->shape.getOrigin().x + coords.x) / 2;
-    this->destination.y = (this->shape.getOrigin().y + coords.y) / 2;
+    this->destination.x = (this->shape.getPosition().x + coords.x) / 2;
+    this->destination.y = (this->shape.getPosition().y + coords.y) / 2;
     this->currentState = eat;
     }
 }
@@ -33,7 +33,7 @@ void Grasseaters::findSex() {
     Grasseaters *newHusband;
     bool check = false;
     for (auto & who: grasseaters) {
-        float distance = sqrt((this->shape.getOrigin().x - who->shape.getOrigin().x) * (this->shape.getOrigin().x - who->shape.getOrigin().x) + (this->shape.getOrigin().y - who->shape.getOrigin().y) * (this->shape.getOrigin().y - who->shape.getOrigin().y));
+        float distance = sqrt((this->shape.getPosition().x - who->shape.getPosition().x) * (this->shape.getPosition().x - who->shape.getPosition().x) + (this->shape.getPosition().y - who->shape.getPosition().y) * (this->shape.getPosition().y - who->shape.getPosition().y));
         if (distance<localMin) {
             check = true;
             localMin = distance;
@@ -41,8 +41,8 @@ void Grasseaters::findSex() {
         }
     }
     if (check) {
-    this->destination.x = (this->shape.getOrigin().x + newHusband->shape.getOrigin().x) / 2;
-    this->destination.y = (this->shape.getOrigin().y + newHusband->shape.getOrigin().y) / 2;
+    this->destination.x = (this->shape.getPosition().x + newHusband->shape.getPosition().x) / 2;
+    this->destination.y = (this->shape.getPosition().y + newHusband->shape.getPosition().y) / 2;
     newHusband->destination = this->destination;}
     this->currentState = sex;
     newHusband->currentState = sex;
