@@ -40,7 +40,7 @@ void Grasseaters::findSex() {
                               (this->shape.getPosition().x - who->shape.getPosition().x) +
                               (this->shape.getPosition().y - who->shape.getPosition().y) *
                               (this->shape.getPosition().y - who->shape.getPosition().y));
-        if (distance < localMin) {
+        if (distance < localMin && who->currentState == walk && this!=who) {
             check = true;
             localMin = distance;
             newHusband = who;
