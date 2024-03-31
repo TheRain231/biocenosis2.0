@@ -8,6 +8,7 @@
 
 class Alives: public Entity {
 protected:
+    Entity* food;
     Alives* target;
     enum State {
         sex, eat, dead, walk

@@ -11,7 +11,7 @@ class Hunter: public Alives {
 public:
     Hunter();
     Hunter(const float x, const float y);
-    ~Hunter();
+    ~Hunter(){}
 
     void findFood();
     void findSex();

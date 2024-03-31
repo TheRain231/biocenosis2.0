@@ -8,8 +8,6 @@
 #include "defines.h"
 
 class Entity {
-protected:
-    Entity* food;
 public:
     sf::RectangleShape shape;
     Entity();
