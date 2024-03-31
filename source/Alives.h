@@ -22,7 +22,7 @@ protected:
 public:
     Alives();
     Alives(const float x, const float y);
-    ~Alives();
+    virtual ~Alives();
 
     void update();
     void checkState();

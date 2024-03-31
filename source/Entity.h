@@ -14,7 +14,7 @@ public:
     sf::RectangleShape shape;
     Entity();
     Entity(const float x, const float y);
-    ~Entity();
+    virtual ~Entity();
 
     virtual void update() = 0;
     virtual void deleteObject() = 0;
