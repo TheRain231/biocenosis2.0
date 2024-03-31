@@ -34,6 +34,8 @@ void Grasseaters::findFood() {
         this->destination.y =  newHusband->shape.getPosition().y;
         this->currentState = eat;
         this->food = newHusband;
+    } else {
+        food = nullptr;
     }
 }
 
@@ -62,8 +64,9 @@ void Grasseaters::findSex() {
 
         this->target = newHusband;
         newHusband->target = this;
+    } else {
+        target = nullptr;
     }
-
 }
 
 void Grasseaters::deleteObject() {

@@ -12,10 +12,9 @@ public:
     sf::RectangleShape shape;
     Entity();
     Entity(const float x, const float y);
-    virtual ~Entity();
+    virtual ~Entity(){}
 
     virtual void update() = 0;
-    void deleteObject();
     void render(sf::RenderTarget* target);
 };
 

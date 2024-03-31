@@ -37,8 +37,9 @@ void Hunter::findFood() {
         this->destination.y = newHusband->shape.getPosition().y;
         this->food = newHusband;
         this->currentState = eat;
+    } else {
+        food = nullptr;
     }
-
 }
 
 void Hunter::findSex() {
@@ -64,6 +65,8 @@ void Hunter::findSex() {
         newHusband->currentState = sex;
         this->target = newHusband;
         newHusband->target = this;
+    } else {
+        target = nullptr;
     }
 }
 

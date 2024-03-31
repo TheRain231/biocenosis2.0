@@ -21,8 +21,3 @@ void Entity::update() {
 void Entity::render(sf::RenderTarget *target) {
     target->draw(this->shape);
 }
-
-void Entity::deleteObject() {
-    delete this;
-}
-

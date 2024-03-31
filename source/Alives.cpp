@@ -26,18 +26,72 @@ void Alives::update() {
     this->hunger += 1;
     this->liveTime += 1;
     this->needOfSex += 1;
-//    if (liveTime > LIFE_TIME){
-//        currentState = dead;
-//    }
-    //else if (hunger > HUNGER_DEATH){
-        //currentState = dead;
-        //deleteObject();
-    //}
-    if (hunger > HUNGER && (this->currentState == walk || (this->currentState == eat && this->name == "hunter"))){
+    if (liveTime > LIFE_TIME || hunger > HUNGER_DEATH){
+        if (this->target != nullptr)
+            this->target->target = nullptr;
+        delete this;
+    }
+    else if (hunger > HUNGER && (this->currentState == walk || (this->currentState == eat && this->name == "hunter"))){
         findFood();
     }
     else if (needOfSex > SEX && this->currentState == walk){
         findSex();
+    }
+    if (currentState == eat){
+        if (name == "hunter"){
+            const int grasseatersCount = Grasseaters::grasseaters.size();
+            bool isInArray = false;
+            for (int i = 0; i < grasseatersCount; i++) {
+                if (this->food == Grasseaters::grasseaters[i]){
+                    isInArray = true;
+                    break;
+                }
+            }
+            if (!isInArray){
+                findFood();
+            }
+        }
+        if (name == "grasseater"){
+            const int grassCount = Grass::grass.size();
+            bool isInArray = false;
+            for (int i = 0; i < grassCount; i++) {
+                if (this->food == Grass::grass[i]){
+                    isInArray = true;
+                    break;
+                }
+            }
+            if (!isInArray){
+                findFood();
+            }
+        }
+    }
+    if (currentState == sex){
+        if (name == "hunter"){
+            const int partners = Hunter::hunters.size();
+            bool isInArray = false;
+            for (int i = 0; i < partners; i++) {
+                if (this->target == Hunter::hunters[i]){
+                    isInArray = true;
+                    break;
+                }
+            }
+            if (!isInArray){
+                findSex();
+            }
+        }
+        if (name == "grasseater"){
+            const int partners = Grasseaters::grasseaters.size();
+            bool isInArray = false;
+            for (int i = 0; i < partners; i++) {
+                if (this->target == Grasseaters::grasseaters[i]){
+                    isInArray = true;
+                    break;
+                }
+            }
+            if (!isInArray){
+                findSex();
+            }
+        }
     }
 }
 
@@ -77,19 +131,21 @@ void Alives::changeStateAfterEat() {
 void Alives::checkDestination(){
     if (abs(this->shape.getPosition().x - this->destination.x) < 5 && abs(this->shape.getPosition().y - this->destination.y) < 5) {
         if (this->currentState == sex){
-            this->changeStateAfterSex();
-            this->target->changeStateAfterSex();
-            if (this->name == "hunter"){
-                Hunter::hunters.push_back(new Hunter(this->shape.getPosition().x, this->shape.getPosition().y));
+            if (this->target != nullptr){
+                this->changeStateAfterSex();
+                this->target->changeStateAfterSex();
+                if (this->name == "hunter"){
+                    Hunter::hunters.push_back(new Hunter(this->shape.getPosition().x, this->shape.getPosition().y));
+                }
+                if (this->name == "grasseater"){
+                    Grasseaters::grasseaters.push_back(new Grasseaters(this->shape.getPosition().x, this->shape.getPosition().y));
+                }
+                std::cout << "Произошла ебля" << '\n';
             }
-            if (this->name == "grasseater"){
-                Grasseaters::grasseaters.push_back(new Grasseaters(this->shape.getPosition().x, this->shape.getPosition().y));
-            }
-            std::cout << "Произошла ебля" << '\n';
         }
         if (this->currentState == eat){
             this->changeStateAfterEat();
-            this->food->deleteObject();
+            delete this->food;
             std::cout << "Произошел ужин" << '\n';
         }
         setRandomDestination();

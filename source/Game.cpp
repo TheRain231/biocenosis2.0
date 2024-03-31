@@ -66,11 +66,22 @@ void Game::update() {
     this->updateSFMLEvents();
     //update all entities
     const int huntersCount = Hunter::hunters.size();
+    int grasseatersCount = Grasseaters::grasseaters.size();
+    if (grasseatersCount < 1){
+        std::cout << "Всех съели" << '\n';
+        this->window->close();
+        return;
+    }
+    if (huntersCount < 1){
+        std::cout << "Все сдохли" << '\n';
+        this->window->close();
+        return;
+    }
     for (int i = 0; i < huntersCount; i++) {
         Hunter::hunters[i]->update();
         Hunter::hunters[i]->findWalk();
     }
-    const int grasseatersCount = Grasseaters::grasseaters.size();
+    grasseatersCount = Grasseaters::grasseaters.size();
     for (int i = 0; i < grasseatersCount; i++) {
         Grasseaters::grasseaters[i]->update();
         Grasseaters::grasseaters[i]->findWalk();
