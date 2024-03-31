@@ -12,7 +12,7 @@ Entity::Entity(const float x, const float y) {
     this->shape.setPosition(x, y);
 }
 
-Entity::~Entity() = default;
+
 
 void Entity::update() {
 
@@ -20,5 +20,9 @@ void Entity::update() {
 
 void Entity::render(sf::RenderTarget *target) {
     target->draw(this->shape);
+}
+
+void Entity::deleteObject() {
+    delete this;
 }
 

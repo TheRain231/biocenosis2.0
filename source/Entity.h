@@ -15,7 +15,7 @@ public:
     virtual ~Entity();
 
     virtual void update() = 0;
-    virtual void deleteObject() = 0;
+    void deleteObject();
     void render(sf::RenderTarget* target);
 };
 

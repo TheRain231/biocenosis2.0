@@ -76,5 +76,16 @@ void Grasseaters::renderVector(sf::RenderTarget *target) {
     }
 }
 
+Grasseaters::~Grasseaters() {
+    const int len = Grasseaters::grasseaters.size();
+    int i=0;
+    for (i=0; i<len; i++) {
+        if (Grasseaters::grasseaters[i] == this) {
+            break;
+        }
+    }
+   Grasseaters::grasseaters.erase(Grasseaters::grasseaters.begin()+i);
+}
+
 std::vector<Grasseaters *> Grasseaters::grasseaters;
 sf::Texture Grasseaters::texture;

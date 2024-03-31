@@ -15,6 +15,8 @@ Hunter::Hunter(const float x, const float y) : Alives(x, y) {
     this->shape.setTexture(&texture);
 }
 
+
+
 void Hunter::findFood() {
     float localMin = 100000;
     Grasseaters *newHusband;
@@ -73,6 +75,17 @@ void Hunter::renderVector(sf::RenderTarget *target) {
     for (auto &hunter: hunters) {
         hunter->render(target);
     }
+}
+
+Hunter::~Hunter() {
+    const int len = Hunter::hunters.size();
+    int i=0;
+    for (i=0; i<len; i++) {
+        if (Hunter::hunters[i] == this) {
+            break;
+        }
+    }
+    Hunter::hunters.erase(Hunter::hunters.begin()+i);
 }
 
 sf::Texture Hunter::texture;

@@ -24,5 +24,16 @@ void Grass::update() {
 
 }
 
+Grass::~Grass() {
+    const int len = Grass::grass.size();
+    int i =0;
+    for (i=0; i<len; i++) {
+        if (Grass::grass[i] == this) {
+            break;
+        }
+    }
+    Grass::grass.erase(Grass::grass.begin()+i);
+}
+
 sf::Texture Grass::texture;
 std::vector<Grass*> Grass::grass;
