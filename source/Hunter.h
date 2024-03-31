@@ -10,11 +10,13 @@
 class Hunter: public Alives {
 public:
     Hunter();
+    Hunter(const float x, const float y);
     ~Hunter();
 
     void findFood();
     void findSex();
     void deleteObject();
+    void changeStateAfterSex();
 
     static sf::Texture texture;
     static std::vector<Hunter*> hunters;

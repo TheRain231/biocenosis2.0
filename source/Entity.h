@@ -8,16 +8,17 @@
 #include "defines.h"
 
 class Entity {
+protected:
+    Entity* food;
 public:
     sf::RectangleShape shape;
-public:
     Entity();
     Entity(const float x, const float y);
     ~Entity();
 
     virtual void update() = 0;
-    void render(sf::RenderTarget* target);
     virtual void deleteObject() = 0;
+    void render(sf::RenderTarget* target);
 };
 
 

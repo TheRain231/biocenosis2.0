@@ -8,6 +8,7 @@
 
 class Alives: public Entity {
 protected:
+    Alives* target;
     enum State {
         sex, eat, dead, walk
     };
@@ -16,9 +17,11 @@ protected:
     int hunger;
     int needOfSex;
     int liveTime;
+    std::string name;
 
 public:
     Alives();
+    Alives(const float x, const float y);
     ~Alives();
 
     void update();
@@ -32,7 +35,8 @@ public:
     void move(sf::Vector2f change);
     virtual void findFood() = 0;
     virtual void findSex() = 0;
-
+    void changeStateAfterSex();
+    void changeStateAfterEat();
 };
 
 

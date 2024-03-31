@@ -9,6 +9,7 @@
 class Grasseaters: public Alives {
 public:
     Grasseaters();
+    Grasseaters(const float x, const float y);
     ~Grasseaters();
 
     void findFood();

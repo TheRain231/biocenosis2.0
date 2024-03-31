@@ -5,14 +5,22 @@
 #include "Alives.h"
 #include <iostream>
 #include "Game.h"
+#include <typeinfo>
 
 Alives::~Alives() {
 
 }
 
 Alives::Alives(): Entity() {
+    this->shape.setSize(sf::Vector2f(SPRITE_SIZE, SPRITE_SIZE));
     currentState = walk;
 }
+
+Alives::Alives(const float x, const float y) : Entity(x, y) {
+    this->shape.setSize(sf::Vector2f(SPRITE_SIZE, SPRITE_SIZE));
+    currentState = walk;
+}
+
 
 void Alives::update() {
     this->hunger += 1;
@@ -25,34 +33,11 @@ void Alives::update() {
         //currentState = dead;
         //deleteObject();
     //}
-    //std::cout << this << hunger << '\n';
-    if (hunger > HUNGER && this->currentState == walk || (this->currentState == eat && !strcmp(typeid(this).name(), "P6Hunter"))){
+    if (hunger > HUNGER && (this->currentState == walk || (this->currentState == eat && this->name == "hunter"))){
         findFood();
     }
     else if (needOfSex > SEX && this->currentState == walk){
         findSex();
-    }
-    else if (this->currentState == walk){
-        currentState = walk;
-    }
-    //checkState();
-
-
-}
-
-void Alives::checkState(){
-    switch (currentState) {
-        case dead:
-            deleteObject();
-            break;
-        case eat:
-            findFood();
-            break;
-        case sex:
-            findSex();
-            break;
-        case walk:
-            break;
     }
 }
 
@@ -79,19 +64,35 @@ void Alives::setRandomDestination() {
     this->destination = sf::Vector2f(rand() % (WINDOW_WIDTH - SPRITE_SIZE), rand() % (WINDOW_HEIGHT - SPRITE_SIZE));
 }
 
+void Alives::changeStateAfterSex() {
+    this->needOfSex = 0;
+    this->currentState = walk;
+}
+
+void Alives::changeStateAfterEat() {
+    this->hunger = 0;
+    this->currentState = walk;
+}
 
 void Alives::checkDestination(){
-    if (abs(this->shape.getPosition().x - this->destination.x) < 1 && abs(this->shape.getPosition().y - this->destination.y) < 1) {
+    if (abs(this->shape.getPosition().x - this->destination.x) < 5 && abs(this->shape.getPosition().y - this->destination.y) < 5) {
         if (this->currentState == sex){
-            this->needOfSex = 0;
-            this->currentState = walk;
+            this->changeStateAfterSex();
+            this->target->changeStateAfterSex();
+            if (this->name == "hunter"){
+                Hunter::hunters.push_back(new Hunter(this->shape.getPosition().x, this->shape.getPosition().y));
+            }
+            if (this->name == "grasseater"){
+                Grasseaters::grasseaters.push_back(new Grasseaters(this->shape.getPosition().x, this->shape.getPosition().y));
+            }
             std::cout << "Произошла ебля" << '\n';
         }
         if (this->currentState == eat){
-            this->hunger = 0;
-            this->currentState = walk;
+            this->changeStateAfterEat();
+            this->food->deleteObject();
             std::cout << "Произошел ужин" << '\n';
         }
         setRandomDestination();
     }
 }
+

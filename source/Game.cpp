@@ -65,13 +65,15 @@ void Game::updateSFMLEvents() {
 void Game::update() {
     this->updateSFMLEvents();
     //update all entities
-    for (auto obj: Hunter::hunters) {
-        obj->update();
-        obj->findWalk();
+    const int huntersCount = Hunter::hunters.size();
+    for (int i = 0; i < huntersCount; i++) {
+        Hunter::hunters[i]->update();
+        Hunter::hunters[i]->findWalk();
     }
-    for (auto obj: Grasseaters::grasseaters) {
-        obj->update();
-        obj->findWalk();
+    const int grasseatersCount = Grasseaters::grasseaters.size();
+    for (int i = 0; i < grasseatersCount; i++) {
+        Grasseaters::grasseaters[i]->update();
+        Grasseaters::grasseaters[i]->findWalk();
     }
     //дождь идет если     Rain::rain[0]->checkState()==true
 

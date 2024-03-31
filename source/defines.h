@@ -9,9 +9,9 @@
 
 #define SPRITE_SIZE 50
 
-#define GRASS_START 10
-#define GRASSEATERS_START 1
-#define HUNTERS_START 1
+#define GRASS_START 1
+#define GRASSEATERS_START 2
+#define HUNTERS_START 2
 
 #define LIFE_TIME 300
 #define HUNGER_DEATH 100

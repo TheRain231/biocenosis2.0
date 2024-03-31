@@ -6,7 +6,12 @@
 #include <iostream>
 
 Hunter::Hunter() : Alives() {
-    this->shape.setSize(sf::Vector2f(SPRITE_SIZE, SPRITE_SIZE));
+    name = "hunter";
+    this->shape.setTexture(&texture);
+}
+
+Hunter::Hunter(const float x, const float y) : Alives(x, y) {
+    name = "hunter";
     this->shape.setTexture(&texture);
 }
 
@@ -28,6 +33,7 @@ void Hunter::findFood() {
     if (check) {
         this->destination.x = newHusband->shape.getPosition().x;
         this->destination.y = newHusband->shape.getPosition().y;
+        this->food = newHusband;
         this->currentState = eat;
     }
 
@@ -54,6 +60,8 @@ void Hunter::findSex() {
         newHusband->destination = this->destination;
         this->currentState = sex;
         newHusband->currentState = sex;
+        this->target = newHusband;
+        newHusband->target = this;
     }
 }
 

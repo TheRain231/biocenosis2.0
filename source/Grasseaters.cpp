@@ -5,13 +5,18 @@
 #include "Grasseaters.h"
 
 Grasseaters::Grasseaters() : Alives() {
-    this->shape.setSize(sf::Vector2f(SPRITE_SIZE, SPRITE_SIZE));
+    name = "grasseater";
+    this->shape.setTexture(&texture);
+}
+
+Grasseaters::Grasseaters(const float x, const float y) : Alives(x, y) {
+    name = "grasseater";
     this->shape.setTexture(&texture);
 }
 
 void Grasseaters::findFood() {
     float localMin = 100000;
-    sf::Vector2f coords;
+    Grass* newHusband;
     bool check = false;
     for (auto &gras: Grass::grass) {
         float distance = sqrt((this->shape.getPosition().x - gras->shape.getPosition().x) *
@@ -21,13 +26,14 @@ void Grasseaters::findFood() {
         if (distance < localMin) {
             check = true;
             localMin = distance;
-            coords = gras->shape.getPosition();
+            newHusband = gras;
         }
     }
     if (check) {
-        this->destination.x = coords.x;
-        this->destination.y =  coords.y;
+        this->destination.x = newHusband->shape.getPosition().x;
+        this->destination.y =  newHusband->shape.getPosition().y;
         this->currentState = eat;
+        this->food = newHusband;
     }
 }
 
@@ -50,8 +56,12 @@ void Grasseaters::findSex() {
         this->destination.x = (this->shape.getPosition().x + newHusband->shape.getPosition().x) / 2;
         this->destination.y = (this->shape.getPosition().y + newHusband->shape.getPosition().y) / 2;
         newHusband->destination = this->destination;
+
         this->currentState = sex;
         newHusband->currentState = sex;
+
+        this->target = newHusband;
+        newHusband->target = this;
     }
 
 }
