@@ -16,7 +16,6 @@ Hunter::Hunter(const float x, const float y) : Alives(x, y) {
 }
 
 
-
 void Hunter::findFood() {
     float localMin = 100000;
     Grasseaters *newHusband;
@@ -51,7 +50,7 @@ void Hunter::findSex() {
                               (this->shape.getPosition().x - who->shape.getPosition().x) +
                               (this->shape.getPosition().y - who->shape.getPosition().y) *
                               (this->shape.getPosition().y - who->shape.getPosition().y));
-        if (distance < localMin && who->currentState == walk && this!= who && who->needOfSex > SEX) {
+        if (distance < localMin && who->currentState == walk && this != who && who->needOfSex > SEX) {
             check = true;
             localMin = distance;
             newHusband = who;
@@ -82,13 +81,13 @@ void Hunter::renderVector(sf::RenderTarget *target) {
 
 Hunter::~Hunter() {
     const int len = Hunter::hunters.size();
-    int i=0;
-    for (i=0; i<len; i++) {
+    int i = 0;
+    for (i = 0; i < len; i++) {
         if (Hunter::hunters[i] == this) {
             break;
         }
     }
-    Hunter::hunters.erase(Hunter::hunters.begin()+i);
+    Hunter::hunters.erase(Hunter::hunters.begin() + i);
 }
 
 sf::Texture Hunter::texture;

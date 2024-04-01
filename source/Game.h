@@ -29,6 +29,7 @@ private:
     void initBackground();
     void initRain();
     void initDestination();
+    void initMusic();
 
 public:
     Game();

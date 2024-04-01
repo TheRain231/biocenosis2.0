@@ -16,7 +16,7 @@ Grasseaters::Grasseaters(const float x, const float y) : Alives(x, y) {
 
 void Grasseaters::findFood() {
     float localMin = 100000;
-    Grass* newHusband;
+    Grass *newHusband;
     bool check = false;
     for (auto &gras: Grass::grass) {
         float distance = sqrt((this->shape.getPosition().x - gras->shape.getPosition().x) *
@@ -31,7 +31,7 @@ void Grasseaters::findFood() {
     }
     if (check) {
         this->destination.x = newHusband->shape.getPosition().x;
-        this->destination.y =  newHusband->shape.getPosition().y;
+        this->destination.y = newHusband->shape.getPosition().y;
         this->currentState = eat;
         this->food = newHusband;
     } else {
@@ -81,13 +81,13 @@ void Grasseaters::renderVector(sf::RenderTarget *target) {
 
 Grasseaters::~Grasseaters() {
     const int len = Grasseaters::grasseaters.size();
-    int i=0;
-    for (i=0; i<len; i++) {
+    int i = 0;
+    for (i = 0; i < len; i++) {
         if (Grasseaters::grasseaters[i] == this) {
             break;
         }
     }
-   Grasseaters::grasseaters.erase(Grasseaters::grasseaters.begin()+i);
+    Grasseaters::grasseaters.erase(Grasseaters::grasseaters.begin() + i);
 }
 
 std::vector<Grasseaters *> Grasseaters::grasseaters;

@@ -66,12 +66,12 @@ void Game::update() {
     this->updateSFMLEvents();
     const int huntersCount = Hunter::hunters.size();
     int grasseatersCount = Grasseaters::grasseaters.size();
-    if (grasseatersCount < 1){
+    if (grasseatersCount < 1) {
         std::cout << "Всех съели" << '\n';
         this->window->close();
         return;
     }
-    if (huntersCount < 1){
+    if (huntersCount < 1) {
         std::cout << "Все сдохли" << '\n';
         this->window->close();
         return;
@@ -85,7 +85,7 @@ void Game::update() {
         Grasseaters::grasseaters[i]->update();
         Grasseaters::grasseaters[i]->findWalk();
     }
-    if (Rain::rain[0]->checkState()){
+    if (Rain::rain[0]->checkState()) {
         grassCounter++;
         if (grassCounter % 10 == 0)
             Grass::grass.push_back(new Grass);
