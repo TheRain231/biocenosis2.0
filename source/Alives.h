@@ -9,7 +9,7 @@
 class Alives: public Entity {
 protected:
     Entity* food;
-    Alives* target;
+    Alives* target = nullptr;
     enum State {
         sex, eat, dead, walk
     };
@@ -26,14 +26,12 @@ public:
     virtual ~Alives();
 
     void update();
-    void checkState();
+    void checkState() const;
     void findWalk();
 
     void setRandomDestination();
     void checkDestination();
 
-    void move(const float x, const float y);
-    void move(sf::Vector2f change);
     virtual void findFood() = 0;
     virtual void findSex() = 0;
     void changeStateAfterSex();

@@ -45,7 +45,7 @@ bool Rain::checkState() {
     if (timer>raintime){
         timer=0;
         rainstart=rand()%RAIN_CONST+RAIN_CONST;
-        raintime=rainstart+rand()%RAIN_CONST;
+        raintime=rainstart+rand()%RAIN_CONST + MIN_RAIN_TIME;
     }
     else if (timer>rainstart){
         return 1;

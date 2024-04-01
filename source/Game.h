@@ -20,6 +20,8 @@ private:
     sf::RenderWindow *window;
     sf::Event sfEvent;
 
+    long grassCounter = 0;
+
     void initWindow();
     void initGrass();
     void initGrasseaters();

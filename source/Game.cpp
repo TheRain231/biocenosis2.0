@@ -64,7 +64,6 @@ void Game::updateSFMLEvents() {
 
 void Game::update() {
     this->updateSFMLEvents();
-    //update all entities
     const int huntersCount = Hunter::hunters.size();
     int grasseatersCount = Grasseaters::grasseaters.size();
     if (grasseatersCount < 1){
@@ -86,8 +85,11 @@ void Game::update() {
         Grasseaters::grasseaters[i]->update();
         Grasseaters::grasseaters[i]->findWalk();
     }
-    //дождь идет если     Rain::rain[0]->checkState()==true
-
+    if (Rain::rain[0]->checkState()){
+        grassCounter++;
+        if (grassCounter % 10 == 0)
+            Grass::grass.push_back(new Grass);
+    }
 }
 
 void Game::render() {

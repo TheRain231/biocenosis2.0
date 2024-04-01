@@ -8,7 +8,6 @@
 
 class Grass: public Entity {
 private:
-    void deleteObject();
     void update();
 public:
     Grass();
