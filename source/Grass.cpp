@@ -9,15 +9,15 @@ Grass::Grass() : Entity() {
     const int grassCount = grass.size();
     bool hasEnded = false;
     bool smallHasEnded = true;
-    while (!hasEnded && grass.size() < (WINDOW_WIDTH / SPRITE_SIZE)){
-        for (int i = 0; i < grassCount; i++){
-            if (pos == grass[i]->shape.getPosition()){
+    while (!hasEnded && grass.size() < (WINDOW_WIDTH / SPRITE_SIZE)) {
+        for (int i = 0; i < grassCount; i++) {
+            if (pos == grass[i]->shape.getPosition()) {
                 pos = sf::Vector2f(rand() % 20 * SPRITE_SIZE, rand() % 20 * SPRITE_SIZE);
                 smallHasEnded = false;
                 break;
             }
         }
-        if (smallHasEnded){
+        if (smallHasEnded) {
             hasEnded = true;
             break;
         }
@@ -28,26 +28,22 @@ Grass::Grass() : Entity() {
     this->shape.setTexture(&texture);
 }
 
-void Grass::renderVector(sf::RenderTarget* target) {
-    for (auto &grasses : grass) {
+void Grass::renderVector(sf::RenderTarget *target) {
+    for (auto &grasses: grass) {
         grasses->render(target);
     }
 }
 
-void Grass::update() {
-
-}
-
 Grass::~Grass() {
     const int len = Grass::grass.size();
-    int i =0;
-    for (i=0; i<len; i++) {
+    int i;
+    for (i = 0; i < len; i++) {
         if (Grass::grass[i] == this) {
             break;
         }
     }
-    Grass::grass.erase(Grass::grass.begin()+i);
+    Grass::grass.erase(Grass::grass.begin() + i);
 }
 
 sf::Texture Grass::texture;
-std::vector<Grass*> Grass::grass;
+std::vector<Grass *> Grass::grass;

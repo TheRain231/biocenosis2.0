@@ -25,14 +25,15 @@ void Alives::update() {
     this->hunger += 1;
     this->liveTime += 1;
     this->needOfSex += 1;
-    if (liveTime > LIFE_TIME || hunger > HUNGER_DEATH) {
+    if ((name == "grasseater" && liveTime > LIFE_TIME_GRASSEATERS) || (name == "hunter" && liveTime > LIFE_TIME_HUNTERS) || hunger > HUNGER_DEATH) {
         if (this->target != nullptr)
             this->target->target = nullptr;
+        Particles::particles.push_back(new Particles(this->shape.getPosition().x, this->shape.getPosition().y));
         delete this;
     } else if (hunger > HUNGER &&
                (this->currentState == walk || (this->currentState == eat && this->name == "hunter"))) {
         findFood();
-    } else if (needOfSex > SEX && this->currentState == walk) {
+    } else if (((this->name == "hunter" && needOfSex > SEX) || (this->name == "grasseater" && needOfSex > GRASSEATERS_SEX)) && this->currentState == walk) {
         findSex();
     }
     if (currentState == eat) {
@@ -94,6 +95,7 @@ void Alives::update() {
 }
 
 void Alives::findWalk() {
+    int speed = name == "hunter" ? HUNTERS_MOVEMENT_SPEED : MOVEMENT_SPEED;
     if (this->destination.x > WINDOW_WIDTH - SPRITE_SIZE){
         this->destination.x = WINDOW_WIDTH - SPRITE_SIZE;
     }
@@ -104,7 +106,7 @@ void Alives::findWalk() {
 
     float lenght = sqrt(direction.x * direction.x + direction.y * direction.y);
 
-    sf::Vector2f normalized = direction / lenght * float(MOVEMENT_SPEED) * Game::dt;
+    sf::Vector2f normalized = direction / lenght * float(speed) * Game::dt;
 
     normalized.x -= normalized.x > 0 ? remainderf(normalized.x, 1.0) : -(remainderf(normalized.x, 1.0) + 1);
     normalized.y -= normalized.y > 0 ? remainderf(normalized.y, 1.0) : -(remainderf(normalized.y, 1.0) + 1);

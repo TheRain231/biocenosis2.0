@@ -53,6 +53,7 @@ Game::Game() {
     this->initBackground();
     this->initRain();
     this->initDestination();
+    Particles::initParticles();
 }
 
 void Game::updateSFMLEvents() {
@@ -100,7 +101,7 @@ void Game::render() {
     Grasseaters::renderVector(this->window);
     Hunter::renderVector(this->window);
     Rain::renderVector(this->window);
-
+    Particles::renderVector(this->window);
     this->window->display();
 }
 

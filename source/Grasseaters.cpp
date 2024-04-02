@@ -3,6 +3,7 @@
 //
 
 #include "Grasseaters.h"
+#include <iostream>
 
 Grasseaters::Grasseaters() : Alives() {
     name = "grasseater";
@@ -81,12 +82,13 @@ void Grasseaters::renderVector(sf::RenderTarget *target) {
 
 Grasseaters::~Grasseaters() {
     const int len = Grasseaters::grasseaters.size();
-    int i = 0;
+    int i;
     for (i = 0; i < len; i++) {
         if (Grasseaters::grasseaters[i] == this) {
             break;
         }
     }
+    std::cout << "-овца" << std::endl;
     Grasseaters::grasseaters.erase(Grasseaters::grasseaters.begin() + i);
 }
 

@@ -12,12 +12,6 @@ Entity::Entity(const float x, const float y) {
     this->shape.setPosition(x, y);
 }
 
-
-
-void Entity::update() {
-
-}
-
 void Entity::render(sf::RenderTarget *target) {
     target->draw(this->shape);
 }

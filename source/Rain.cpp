@@ -12,7 +12,9 @@ Rain::Rain(float x, float y) {
 }
 
 Rain::~Rain() {
-
+    for (int i = 0 ; i < 2 ; i++){
+        delete rain[i];
+    }
 }
 
 void Rain::renderVector(sf::RenderTarget *target) {

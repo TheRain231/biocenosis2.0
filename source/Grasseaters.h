@@ -6,6 +6,7 @@
 #define BIOCENOSIS_GRASSEATERS_H
 #include "Alives.h"
 #include "Grass.h"
+#include "Particles.h"
 class Grasseaters: public Alives {
 public:
     Grasseaters();

@@ -87,6 +87,7 @@ Hunter::~Hunter() {
             break;
         }
     }
+    std::cout << "стив сдох" << '\n';
     Hunter::hunters.erase(Hunter::hunters.begin() + i);
 }
 

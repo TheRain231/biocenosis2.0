@@ -14,7 +14,6 @@ public:
     Entity(const float x, const float y);
     virtual ~Entity(){}
 
-    virtual void update() = 0;
     void render(sf::RenderTarget* target);
 };
 

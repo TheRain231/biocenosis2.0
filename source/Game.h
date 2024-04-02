@@ -10,6 +10,7 @@
 #include "Grasseaters.h"
 #include "Hunter.h"
 #include "Rain.h"
+#include "Particles.h"
 
 class Game
 {
@@ -29,7 +30,7 @@ private:
     void initBackground();
     void initRain();
     void initDestination();
-    void initMusic();
+
 
 public:
     Game();
