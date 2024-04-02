@@ -5,14 +5,22 @@
 #include "Grasseaters.h"
 #include <iostream>
 
-Grasseaters::Grasseaters() : Alives() {
+void Grasseaters::foo(){
     name = "grasseater";
+    speed = GRASSEATERS_MOVEMENT_SPEED;
+    deathLimit = GRASSEATERS_LIFE_TIME;
+    hungerLimit = GRASSEATERS_HUNGER_DEATH;
+    sexGate = GRASSEATERS_SEX;
+    hungerGate = GRASSEATERS_HUNGER;
     this->shape.setTexture(&texture);
 }
 
+Grasseaters::Grasseaters() : Alives() {
+    foo();
+}
+
 Grasseaters::Grasseaters(const float x, const float y) : Alives(x, y) {
-    name = "grasseater";
-    this->shape.setTexture(&texture);
+    foo();
 }
 
 void Grasseaters::findFood() {
@@ -49,7 +57,7 @@ void Grasseaters::findSex() {
                               (this->shape.getPosition().x - who->shape.getPosition().x) +
                               (this->shape.getPosition().y - who->shape.getPosition().y) *
                               (this->shape.getPosition().y - who->shape.getPosition().y));
-        if (distance < localMin && who->currentState == walk && this != who && who->needOfSex > SEX) {
+        if (distance < localMin && who->currentState == walk && this != who && who->needOfSex > sexGate) {
             check = true;
             localMin = distance;
             newHusband = who;
@@ -70,10 +78,6 @@ void Grasseaters::findSex() {
     }
 }
 
-void Grasseaters::deleteObject() {
-
-}
-
 void Grasseaters::renderVector(sf::RenderTarget *target) {
     for (auto &eater: grasseaters) {
         eater->render(target);
@@ -88,8 +92,16 @@ Grasseaters::~Grasseaters() {
             break;
         }
     }
-    std::cout << "-овца" << std::endl;
     Grasseaters::grasseaters.erase(Grasseaters::grasseaters.begin() + i);
+}
+
+void Grasseaters::initGrasseates() {
+    Grasseaters::texture.loadFromFile("textures/sheep.png");
+    for (int i = 0; i < GRASSEATERS_START; i++)
+        Grasseaters::grasseaters.push_back(new Grasseaters());
+    for (auto obj: Grasseaters::grasseaters) {
+        obj->setRandomDestination();
+    }
 }
 
 std::vector<Grasseaters *> Grasseaters::grasseaters;

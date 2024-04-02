@@ -55,5 +55,10 @@ bool Rain::checkState() {
     return 0;
 }
 
+void Rain::initRain() {
+    Rain::rain.push_back(new Rain(0, 0));
+    Rain::rain.push_back(new Rain(0, WINDOW_HEIGHT));
+}
+
 
 std::vector<Rain*> Rain::rain;

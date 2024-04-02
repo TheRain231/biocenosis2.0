@@ -10,9 +10,12 @@ class Rain {
 public:
     Rain(float x, float y);
     ~Rain();
+
+    bool checkState();
+
+    static void initRain();
     static void renderVector(sf::RenderTarget* target);
     static std::vector<Rain*> rain;
-    bool checkState();
 private:
     void render(sf::RenderTarget* target);
     sf::RectangleShape shape;

@@ -9,6 +9,10 @@
 #include "Particles.h"
 
 class Hunter: public Alives {
+private:
+    void foo();
+
+    static sf::Texture texture;
 public:
     Hunter();
     Hunter(const float x, const float y);
@@ -16,10 +20,9 @@ public:
 
     void findFood();
     void findSex();
-    void deleteObject();
     void changeStateAfterSex();
 
-    static sf::Texture texture;
+    static void initHunters();
     static std::vector<Hunter*> hunters;
     static void renderVector(sf::RenderTarget* target);
 };

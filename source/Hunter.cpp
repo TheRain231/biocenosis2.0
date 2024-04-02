@@ -5,14 +5,22 @@
 #include "Hunter.h"
 #include <iostream>
 
-Hunter::Hunter() : Alives() {
+void Hunter::foo() {
     name = "hunter";
+    speed = HUNTERS_MOVEMENT_SPEED;
+    deathLimit = HUNTERS_LIFE_TIME;
+    hungerLimit = HUNTERS_HUNGER_DEATH;
+    sexGate = HUNTERS_SEX;
+    hungerGate = HUNTERS_HUNGER;
     this->shape.setTexture(&texture);
 }
 
+Hunter::Hunter() : Alives() {
+    foo();
+}
+
 Hunter::Hunter(const float x, const float y) : Alives(x, y) {
-    name = "hunter";
-    this->shape.setTexture(&texture);
+    foo();
 }
 
 
@@ -50,7 +58,7 @@ void Hunter::findSex() {
                               (this->shape.getPosition().x - who->shape.getPosition().x) +
                               (this->shape.getPosition().y - who->shape.getPosition().y) *
                               (this->shape.getPosition().y - who->shape.getPosition().y));
-        if (distance < localMin && who->currentState == walk && this != who && who->needOfSex > SEX) {
+        if (distance < localMin && who->currentState == walk && this != who && who->needOfSex > sexGate) {
             check = true;
             localMin = distance;
             newHusband = who;
@@ -69,10 +77,6 @@ void Hunter::findSex() {
     }
 }
 
-void Hunter::deleteObject() {
-
-}
-
 void Hunter::renderVector(sf::RenderTarget *target) {
     for (auto &hunter: hunters) {
         hunter->render(target);
@@ -87,8 +91,16 @@ Hunter::~Hunter() {
             break;
         }
     }
-    std::cout << "стив сдох" << '\n';
     Hunter::hunters.erase(Hunter::hunters.begin() + i);
+}
+
+void Hunter::initHunters() {
+    Hunter::texture.loadFromFile("textures/hunter.png");
+    for (int i = 0; i < HUNTERS_START; i++)
+        Hunter::hunters.push_back(new Hunter());
+    for (auto obj: Hunter::hunters) {
+        obj->setRandomDestination();
+    }
 }
 
 sf::Texture Hunter::texture;

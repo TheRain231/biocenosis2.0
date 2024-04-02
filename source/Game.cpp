@@ -5,17 +5,6 @@ void Game::initWindow() {
     this->window->setFramerateLimit(FPS);
 }
 
-void Game::initGrasseaters() {
-    Grasseaters::texture.loadFromFile("textures/sheep.png");
-    for (int i = 0; i < GRASSEATERS_START; i++)
-        Grasseaters::grasseaters.push_back(new Grasseaters());
-}
-
-void Game::initHunters() {
-    Hunter::texture.loadFromFile("textures/hunter.png");
-    for (int i = 0; i < HUNTERS_START; i++)
-        Hunter::hunters.push_back(new Hunter());
-}
 
 void Game::initBackground() {
     backgroundTexture.loadFromFile("textures/background.png");
@@ -24,35 +13,13 @@ void Game::initBackground() {
 }
 
 
-void Game::initGrass() {
-    Grass::texture.loadFromFile("textures/grass.png");
-    for (int i = 0; i < GRASS_START; i++)
-        Grass::grass.push_back(new Grass());
-}
-
-void Game::initRain() {
-    Rain::rain.push_back(new Rain(0, 0));
-    Rain::rain.push_back(new Rain(0, WINDOW_HEIGHT));
-}
-
-void Game::initDestination() {
-    for (auto obj: Hunter::hunters) {
-        obj->setRandomDestination();
-    }
-    for (auto obj: Grasseaters::grasseaters) {
-        obj->setRandomDestination();
-    }
-}
-
-
 Game::Game() {
     this->initWindow();
-    this->initGrass();
-    this->initGrasseaters();
-    this->initHunters();
+    Grass::initGrass();
+    Grasseaters::initGrasseates();
+    Hunter::initHunters();
     this->initBackground();
-    this->initRain();
-    this->initDestination();
+    Rain::initRain();
     Particles::initParticles();
 }
 

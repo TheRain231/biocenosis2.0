@@ -25,15 +25,15 @@ void Alives::update() {
     this->hunger += 1;
     this->liveTime += 1;
     this->needOfSex += 1;
-    if ((name == "grasseater" && liveTime > LIFE_TIME_GRASSEATERS) || (name == "hunter" && liveTime > LIFE_TIME_HUNTERS) || hunger > HUNGER_DEATH) {
+    if (liveTime > deathLimit || hunger > hungerLimit) {
         if (this->target != nullptr)
             this->target->target = nullptr;
         Particles::particles.push_back(new Particles(this->shape.getPosition().x, this->shape.getPosition().y));
         delete this;
-    } else if (hunger > HUNGER &&
+    } else if (hunger > hungerGate &&
                (this->currentState == walk || (this->currentState == eat && this->name == "hunter"))) {
         findFood();
-    } else if (((this->name == "hunter" && needOfSex > SEX) || (this->name == "grasseater" && needOfSex > GRASSEATERS_SEX)) && this->currentState == walk) {
+    } else if (needOfSex > sexGate && this->currentState == walk) {
         findSex();
     }
     if (currentState == eat) {
@@ -95,7 +95,6 @@ void Alives::update() {
 }
 
 void Alives::findWalk() {
-    int speed = name == "hunter" ? HUNTERS_MOVEMENT_SPEED : MOVEMENT_SPEED;
     if (this->destination.x > WINDOW_WIDTH - SPRITE_SIZE){
         this->destination.x = WINDOW_WIDTH - SPRITE_SIZE;
     }

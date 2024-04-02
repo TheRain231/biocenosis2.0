@@ -9,9 +9,9 @@
 class Alives: public Entity {
 protected:
     Entity* food;
-    Alives* target = nullptr;
+    Alives* target;
     enum State {
-        sex, eat, dead, walk
+        sex, eat, walk
     };
     State currentState;
     sf::Vector2f destination;
@@ -20,13 +20,17 @@ protected:
     int liveTime;
     std::string name;
 
+    int speed;
+    int deathLimit;
+    int hungerLimit;
+    int sexGate;
+    int hungerGate;
 public:
     Alives();
     Alives(const float x, const float y);
     virtual ~Alives();
 
     void update();
-    void checkState() const;
     void findWalk();
 
     void setRandomDestination();

@@ -45,5 +45,11 @@ Grass::~Grass() {
     Grass::grass.erase(Grass::grass.begin() + i);
 }
 
+void Grass::initGrass() {
+    Grass::texture.loadFromFile("textures/grass.png");
+    for (int i = 0; i < GRASS_START; i++)
+        Grass::grass.push_back(new Grass());
+}
+
 sf::Texture Grass::texture;
 std::vector<Grass *> Grass::grass;

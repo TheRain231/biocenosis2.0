@@ -8,6 +8,9 @@
 #include "Grass.h"
 #include "Particles.h"
 class Grasseaters: public Alives {
+private:
+    void foo();
+    static sf::Texture texture;
 public:
     Grasseaters();
     Grasseaters(const float x, const float y);
@@ -15,10 +18,9 @@ public:
 
     void findFood();
     void findSex();
-    void deleteObject();
 
+    static void initGrasseates();
     static std::vector<Grasseaters*> grasseaters;
-    static sf::Texture texture;
     static void renderVector(sf::RenderTarget* target);
 };
 

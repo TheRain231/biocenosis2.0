@@ -7,10 +7,12 @@
 #include "Entity.h"
 
 class Grass: public Entity {
+    static sf::Texture texture;
 public:
     Grass();
     ~Grass();
-    static sf::Texture texture;
+
+    static void initGrass();
     static std::vector<Grass*> grass;
     static void renderVector(sf::RenderTarget* target);
 };

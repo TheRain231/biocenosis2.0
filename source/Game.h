@@ -24,14 +24,7 @@ private:
     long grassCounter = 0;
 
     void initWindow();
-    void initGrass();
-    void initGrasseaters();
-    void initHunters();
     void initBackground();
-    void initRain();
-    void initDestination();
-
-
 public:
     Game();
     ~Game();
@@ -40,6 +33,7 @@ public:
     void update();
     void render();
     void run();
+
     static  sf::Clock dtClock;
     static float dt;
     static void updatedt();
