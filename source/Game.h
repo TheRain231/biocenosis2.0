@@ -15,6 +15,8 @@
 class Game
 {
 private:
+    int timeCount = 0;
+
     sf::RectangleShape background;
     sf::Texture backgroundTexture;
 

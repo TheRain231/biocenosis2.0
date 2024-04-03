@@ -28,7 +28,7 @@ void Alives::update() {
     if (liveTime > deathLimit || hunger > hungerLimit) {
         if (this->target != nullptr)
             this->target->target = nullptr;
-        Particles::particles.push_back(new Particles(this->shape.getPosition().x, this->shape.getPosition().y));
+        //Particles::particles.push_back(new Particles(this->shape.getPosition().x, this->shape.getPosition().y));
         delete this;
     } else if (hunger > hungerGate &&
                (this->currentState == walk || (this->currentState == eat && this->name == "hunter"))) {
@@ -60,6 +60,7 @@ void Alives::update() {
                 }
             }
             if (!isInArray) {
+                this->food = nullptr;
                 findFood();
             }
         }
@@ -152,7 +153,19 @@ void Alives::checkDestination() {
         }
         if (this->currentState == eat) {
             this->changeStateAfterEat();
-            delete this->food;
+            const int partners = Grasseaters::grasseaters.size();
+            bool isInArray = false;
+            for (int i = 0; i < partners; i++) {
+                if (this->target == Grasseaters::grasseaters[i]) {
+                    isInArray = true;
+                    break;
+                }
+            }
+            if (!isInArray) {
+                findSex();
+            } else {
+                delete this->food;
+            }
         }
         setRandomDestination();
     }

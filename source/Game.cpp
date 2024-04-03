@@ -31,16 +31,18 @@ void Game::updateSFMLEvents() {
 }
 
 void Game::update() {
+    timeCount++;
     this->updateSFMLEvents();
     const int huntersCount = Hunter::hunters.size();
     int grasseatersCount = Grasseaters::grasseaters.size();
+    std::cout << huntersCount << " " << grasseatersCount << '\n';
     if (grasseatersCount < 1) {
-        std::cout << "Всех съели" << '\n';
+        std::cout << "Всех съели, время: " << timeCount << '\n';
         this->window->close();
         return;
     }
     if (huntersCount < 1) {
-        std::cout << "Все сдохли" << '\n';
+        std::cout << "Все сдохли, время: " << timeCount << '\n';
         this->window->close();
         return;
     }
@@ -85,7 +87,7 @@ void Game::run() {
 }
 
 void Game::updatedt() {
-    dt = dtClock.restart().asSeconds();
+    dt = dtClock.restart().asSeconds() * 3;
 }
 
 sf::Clock Game::dtClock;

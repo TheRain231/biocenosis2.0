@@ -20,7 +20,7 @@ protected:
     int liveTime;
     std::string name;
 
-    int speed;
+    float speed;
     int deathLimit;
     int hungerLimit;
     int sexGate;
