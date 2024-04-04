@@ -143,6 +143,7 @@ void Alives::checkDestination() {
                 this->changeStateAfterSex();
                 this->target->changeStateAfterSex();
                 if (this->name == "hunter") {
+                    if (Hunter::hunters.size() < 30)
                     Hunter::hunters.push_back(new Hunter(this->shape.getPosition().x, this->shape.getPosition().y));
                 }
                 if (this->name == "grasseater") {
