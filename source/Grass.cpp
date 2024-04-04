@@ -3,16 +3,17 @@
 //
 
 #include "Grass.h"
+#include <iostream>
 
 Grass::Grass() : Entity() {
-    sf::Vector2f pos(rand() % 20 * SPRITE_SIZE, rand() % 20 * SPRITE_SIZE);
+    sf::Vector2f pos(rand() % 17 * SPRITE_SIZE, rand() % 17 * SPRITE_SIZE);
     const int grassCount = grass.size();
-    if (grassCount < 400) {
+    if (grassCount < 289) {
         int i = 0;
         for (; i < grassCount; i++) {
             if (pos == grass[i]->shape.getPosition()) {
                 i = 0;
-                pos = sf::Vector2f(rand() % 20 * SPRITE_SIZE, rand() % 20 * SPRITE_SIZE);
+                pos = sf::Vector2f(rand() % 17 * SPRITE_SIZE, rand() % 17 * SPRITE_SIZE);
             }
         }
         this->shape.setPosition(pos);
